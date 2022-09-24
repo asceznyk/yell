@@ -6,5 +6,8 @@ app = Flask(__name__)
 def hello():
     return "Fuck yeah!"
 
+if __name__ == '__main__':
+    hello()
+
 
 
