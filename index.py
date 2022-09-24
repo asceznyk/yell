@@ -7,7 +7,7 @@ def hello():
     return "Fuck yeah!"
 
 if __name__ == '__main__':
-    hello()
+    app.run()
 
 
 
