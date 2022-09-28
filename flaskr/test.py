@@ -10,10 +10,9 @@ import numpy as np
 from threading import Event
 
 class Listener:
-    def __init__(self, sample_rate=8000, record_seconds=2):
+    def __init__(self, sample_rate=8000):
         self.chunk = 1024
         self.sample_rate = sample_rate
-        self.record_seconds = record_seconds
         self.p = pyaudio.PyAudio()
         self.stream = self.p.open(format=pyaudio.paInt16,
                         channels=1,
@@ -36,7 +35,7 @@ class Listener:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="demoing the speech recognition engine in terminal.")
-    parser.add_argument('--model_file', type=str, default=None, required=True,
+    parser.add_argument('--model_file', type=str, default=None,
                         help='optimized file to load. use optimize_graph.py')
 
     listener = Listener(sample_rate=8000)
