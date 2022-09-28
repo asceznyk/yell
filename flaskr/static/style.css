@@ -9,13 +9,10 @@ html, body {
 	max-width: 500px;
 }
 
-.header {
+.header, .design, .transcript {
 	text-align:center;
 }
 
-.design { 
-	text-align:center;
-}
 
 
 
