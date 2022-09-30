@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, render_template
+from flask import Flask, Blueprint, Response, render_template
 import pyaudio
 
 bp = Blueprint('app', __name__, url_prefix='/')
