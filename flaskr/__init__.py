@@ -23,9 +23,8 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route("/")
-    def main_page():
-        return render_template('main.html')
+    from . import app
+    app.register_blueprint(app.bp)
 
     # a simple page that says hello
     @app.route('/hello')
