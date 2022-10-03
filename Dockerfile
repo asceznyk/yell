@@ -1,10 +1,14 @@
-FROM python:3.10.6
+FROM python:3.10-alpine
 
-ENV APP_HOME ./
-WORKDIR $APP_HOME
-COPY . ./
+COPY ./requirements.txt ./app/requirements.txt
+
+WORKDIR /app
 
 RUN pip3 install -r requirements.txt
 
-CMD home:app
+COPY . /app
+
+ENTRYPOINT ['python3']
+
+CMD ['home.py']
 
