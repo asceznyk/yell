@@ -1,6 +1,6 @@
 FROM python:3.10.6
 
-ENV APP_HOME /app
+ENV APP_HOME ./
 WORKDIR $APP_HOME
 COPY . ./
 
