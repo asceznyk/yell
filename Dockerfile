@@ -8,7 +8,7 @@ RUN pip install -r requirements.txt
 
 COPY . /app
 
-ENTRYPOINT ['python']
+ENTRYPOINT ["python"]
 
-CMD ['home.py']
+CMD ["home.py"]
 
