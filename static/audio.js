@@ -1,3 +1,6 @@
+let record = document.getElementById("start")
+let stop = document.getElementById("stop")
+
 if (navigator.mediaDevices) {
 	console.log('getUserMedia supported.');
 
