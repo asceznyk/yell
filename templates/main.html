@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Speech to text</title>
-    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
 </head>
 <body>
     <div class="wrapper">
@@ -13,7 +13,7 @@
         </div>
         <div class="transcript"></div>
     </div>
-    <script>
+    <script type="text/javascript" src="{{ url_for('static', filename='audio.js') }}">
     </script>
 </body>
 </html>
