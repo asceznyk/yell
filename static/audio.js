@@ -1,5 +1,6 @@
 let record = document.getElementById("record")
 let stop = document.getElementById("stop")
+let audio = document.getElementById("raudio")
 
 if (navigator.mediaDevices) {
 	console.log('getUserMedia supported.');
@@ -31,34 +32,13 @@ if (navigator.mediaDevices) {
     mediaRecorder.onstop = (e) => {
       console.log("data available after MediaRecorder.stop() called.");
 
-      const clipName = prompt('Enter a name for your sound clip');
-
-      const clipContainer = document.createElement('article');
-      const clipLabel = document.createElement('p');
-      const audio = document.createElement('audio');
-      const deleteButton = document.createElement('button');
-
-      clipContainer.classList.add('clip');
-      audio.setAttribute('controls', '');
-      deleteButton.textContent = "Delete";
-      clipLabel.textContent = clipName;
-
-      clipContainer.appendChild(audio);
-      clipContainer.appendChild(clipLabel);
-      clipContainer.appendChild(deleteButton);
-      //soundClips.appendChild(clipContainer);
-
-      audio.controls = true;
+      const clipName = prompt('Enter a name for your sound clip')
+    
       const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
       chunks = [];
       const audioURL = URL.createObjectURL(blob);
       audio.src = audioURL;
       console.log("recorder stopped");
-
-      deleteButton.onclick = (e) => {
-        const evtTgt = e.target;
-        evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
-      }
     }
 
     mediaRecorder.ondataavailable = (e) => {
