@@ -9,7 +9,7 @@ if (navigator.mediaDevices) {
 
     const mediaRecorder = new MediaRecorder(stream);
 
-    visualize(stream);
+    //visualize(stream);
 
     record.onclick = () => {
       mediaRecorder.start();
