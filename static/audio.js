@@ -1,4 +1,4 @@
-let record = document.getElementById("start")
+let record = document.getElementById("record")
 let stop = document.getElementById("stop")
 
 if (navigator.mediaDevices) {
@@ -11,8 +11,6 @@ if (navigator.mediaDevices) {
   .then((stream) => {
 
     const mediaRecorder = new MediaRecorder(stream);
-
-    //visualize(stream);
 
     record.onclick = () => {
       mediaRecorder.start();
@@ -48,7 +46,7 @@ if (navigator.mediaDevices) {
       clipContainer.appendChild(audio);
       clipContainer.appendChild(clipLabel);
       clipContainer.appendChild(deleteButton);
-      soundClips.appendChild(clipContainer);
+      //soundClips.appendChild(clipContainer);
 
       audio.controls = true;
       const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
