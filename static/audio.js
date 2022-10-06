@@ -32,28 +32,34 @@ if (navigator.mediaDevices) {
     setInterval(function(e) { 
       if(mediaRecorder.state == "recording") {
         mediaRecorder.stop()
- 
-        audio.src = URL.createObjectURL(
-          new Blob(chunks, {'type':'audio/ogg; codecs=opus'})
-        );
-        console.log("recorder paused");
-        audio.play();  
+        
+        mediaRecorder.onstop = (e) => {
+          console.log(chunks.length)
+          console.log("data available after MediaRecorder.stop() called.");
+        }
+
+        mediaRecorder.ondataavailable = (e) => {
+          console.log('pushing to chunks')
+          chunks.push(e.data);
+
+          console.log(chunks.length)
+          audio.src = URL.createObjectURL(
+            new Blob(chunks, {'type':'audio/ogg; codecs=opus'})
+          );
+          audio.play(); 
+        }
+
+        mediaRecorder.start()
       }
     }, 3000)
 
-    mediaRecorder.onstop = (e) => {
-      console.log("data available after MediaRecorder.stop() called.");
-      chunks = [];
-    }
-
-    mediaRecorder.ondataavailable = (e) => {
-      chunks.push(e.data);
-    }
+   
   })
   .catch((err) => {
     console.error(`The following error occurred: ${err}`);
   })
 }
+
 
 
 
