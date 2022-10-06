@@ -29,12 +29,13 @@ if (navigator.mediaDevices) {
       record.style.color = "";
     }
 
-    setInterval(function(e) {
+    setInterval(function(e) { 
       if(mediaRecorder.state == "recording") {
-        const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
-        //chunks = [];
-        const audioURL = URL.createObjectURL(blob);
-        audio.src = audioURL;
+        mediaRecorder.stop()
+ 
+        audio.src = URL.createObjectURL(
+          new Blob(chunks, {'type':'audio/ogg; codecs=opus'})
+        );
         console.log("recorder paused");
         audio.play();  
       }
