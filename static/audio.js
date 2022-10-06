@@ -31,7 +31,7 @@ if (navigator.mediaDevices) {
 
     setInterval(function(e) {
       const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
-      chunks = [];
+      //chunks = [];
       const audioURL = URL.createObjectURL(blob);
       audio.src = audioURL;
       console.log("recorder paused");
@@ -40,6 +40,7 @@ if (navigator.mediaDevices) {
 
     mediaRecorder.onstop = (e) => {
       console.log("data available after MediaRecorder.stop() called.");
+      chunks = [];
     }
 
     mediaRecorder.ondataavailable = (e) => {
