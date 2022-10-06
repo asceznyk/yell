@@ -13,6 +13,22 @@ html, body {
 	text-align:center;
 }
 
+.btn {
+	border:none;
+	border-radius:5px;
+	padding:5px;
+	min-width:50px;
+	text-align:center;
+	background:blanchedalmond
+}
+
+.btn:hover {
+	background:aliceblue;
+}
+
+.recorder, .player {
+	margin-bottom:10px;
+}
 
 
 
