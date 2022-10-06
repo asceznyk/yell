@@ -31,8 +31,6 @@ if (navigator.mediaDevices) {
 
     mediaRecorder.onstop = (e) => {
       console.log("data available after MediaRecorder.stop() called.");
-
-      const clipName = prompt('Enter a name for your sound clip')
     
       const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
       chunks = [];
