@@ -30,12 +30,14 @@ if (navigator.mediaDevices) {
     }
 
     setInterval(function(e) {
-      const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
-      //chunks = [];
-      const audioURL = URL.createObjectURL(blob);
-      audio.src = audioURL;
-      console.log("recorder paused");
-      audio.play();
+      if(mediaRecorder.state == "recording") {
+        const blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+        //chunks = [];
+        const audioURL = URL.createObjectURL(blob);
+        audio.src = audioURL;
+        console.log("recorder paused");
+        audio.play();  
+      }
     }, 3000)
 
     mediaRecorder.onstop = (e) => {
