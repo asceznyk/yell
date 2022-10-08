@@ -44,7 +44,7 @@ if (navigator.mediaDevices) {
 
           fetch('/audio', {
             Method:'POST',
-            Body: {'url': url} 
+            Body: {'url': audio.src} 
           }).then(chunks = [])
         }
 
