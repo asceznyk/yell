@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, request
-from werkzeug import secure_filename
+#from werkzeug import secure_filename
 
 app = Flask(__name__)
 
@@ -8,7 +8,7 @@ app = Flask(__name__)
 def main_page():
     if request.method == 'POST':
         f = request.files['url']
-        f.save(secure_filename(f'./temp/{f.filename}'))
+        f.save('./temp/audio.ogg')
         return 'audio is in the server'
     else:
         return render_template('main.html')
