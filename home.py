@@ -10,7 +10,7 @@ def main_page():
     if request.method == 'POST':
         f = request.get_json(force=True)
         f = urllib.request.urlopen(f['audio'])
-        with open('./temp/audio.ogg', 'wb') as out:
+        with open('audio.ogg', 'wb') as out:
             out.write(f.read())
         return 'audio sent successfully'
     else:
