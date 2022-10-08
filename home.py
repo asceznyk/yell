@@ -7,7 +7,8 @@ app = Flask(__name__)
 @app.route("/", methods=['GET', 'POST'])
 def main_page():
     if request.method == 'POST':
-        f = request.json['audio']
+        f = request.get_json(force=True)
+        f = f['audio']
         return f
     else:
         return render_template('main.html')
