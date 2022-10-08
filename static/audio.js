@@ -42,7 +42,7 @@ if (navigator.mediaDevices) {
             new Blob(chunks, {'type':'audio/ogg; codecs=opus'})
           );
 
-          fetch('/audio', {
+          fetch('/', {
             Method:'POST',
             Body: {'url': audio.src} 
           }).then(chunks = [])
