@@ -40,8 +40,8 @@ if (navigator.mediaDevices) {
             Body: {'url': audio.src} 
           }).then((response) => {
             chunks = []
-            return response.json()
-          }).then((data) => console.log(data))
+            //return response.json()
+          }) //.then((data) => console.log(data))
         }
 
         mediaRecorder.start()
