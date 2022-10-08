@@ -29,21 +29,9 @@ if (navigator.mediaDevices) {
       record.style.color = "";
     }
 
-    function sendAudio(url) {
-      return fetch('/audio', {
-        Method:'POST',
-        Body: {'url': url} 
-      })
-    }
-
-    async function recordMedia(e) { 
+    setInterval(function(e) { 
       if(mediaRecorder.state == "recording") {
-        mediaRecorder.stop()
-        
-        mediaRecorder.onstop = (e) => {
-          console.log(chunks.length)
-          console.log("data available after MediaRecorder.stop() called.");
-        }
+        mediaRecorder.stop() 
 
         mediaRecorder.ondataavailable = (e) => {
           console.log('pushing to chunks')
@@ -53,15 +41,16 @@ if (navigator.mediaDevices) {
           audio.src = URL.createObjectURL(
             new Blob(chunks, {'type':'audio/ogg; codecs=opus'})
           );
-          //audio.play();
-          let success = await sendAudio(audio.src)
+
+          fetch('/audio', {
+            Method:'POST',
+            Body: {'url': url} 
+          }).then(chunks = [])
         }
 
         mediaRecorder.start()
       }
-    }
-
-    setInterval(recordMedia, 3000);
+    }, 3000);
   })
   .catch((err) => {
     console.error(`The following error occurred: ${err}`);
