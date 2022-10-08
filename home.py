@@ -8,6 +8,7 @@ def main_page():
     if request.method == 'POST':
         f = request.files['url']
         f.save('audio.ogg')
+        return 'audio is in the server'
     else:
         return render_template('main.html')
 
