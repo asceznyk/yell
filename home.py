@@ -7,8 +7,7 @@ app = Flask(__name__)
 @app.route("/", methods=['GET', 'POST'])
 def main_page():
     if request.method == 'POST':
-        f = request.files['audio']
-        f.save('./temp/audio.ogg')
+        f = request.json['audio']
         return f
     else:
         return render_template('main.html')
