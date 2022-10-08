@@ -36,8 +36,8 @@ if (navigator.mediaDevices) {
           );
 
           fetch('/', {
-            Method:'POST',
-            Body: {'url': audio.src} 
+            method:'POST',
+            body: JSON.stringify({'url': audio.src}) 
           }).then((response) => {
             chunks = []
             return response.json()
