@@ -38,7 +38,10 @@ if (navigator.mediaDevices) {
           fetch('/', {
             Method:'POST',
             Body: {'url': audio.src} 
-          }).then(chunks = [])
+          }).then((data) => {
+            console.log(data)
+            chunks = []
+          })
         }
 
         mediaRecorder.start()
