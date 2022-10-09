@@ -16,9 +16,8 @@ def main_page():
         file_obj.seek(0)
         
         mic = sr.AudioFile(file_obj)
-        #with mic as source:
-        #    audio = model.record(source)
-        #    text = model.recognize_google(audio)
+        with mic as source: audio = model.record(source)
+        text = model.recognize_google(audio)
 
         text = 'some crap'
         return {'msg':text}
