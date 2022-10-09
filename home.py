@@ -10,7 +10,7 @@ def main_page():
     if request.method == 'POST':
         audio = request.files.get('audio')
         text = model.recognize_google(audio)
-        return {'msg':'audio sent successfully'}
+        return {'msg':text}
     else:
         return render_template('main.html')
 
