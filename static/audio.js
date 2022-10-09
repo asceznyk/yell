@@ -9,13 +9,13 @@ let upload = (file) => {
     body: file
   })
 };
-let onSelectFile = () => upload(fin.files[0]);
+
 fin.onclick = function () {
   this.value = null;
 };
   
 fin.onchange = function () {
-  console.log('ohh gd!');
+  upload(fin.files[0])
 };
 
 if (navigator.mediaDevices) {
