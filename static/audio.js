@@ -10,13 +10,8 @@ let upload = (file) => {
   })
 };
 
-fin.onclick = function () {
-  this.value = null;
-};
-  
-fin.onchange = function () {
-  upload(fin.files[0])
-};
+const onSelectFile = () => upload(input.files[0]);
+fin.addEventListener('change', onSelectFile, false);
 
 if (navigator.mediaDevices) {
 
