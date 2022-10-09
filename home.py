@@ -23,7 +23,7 @@ def main_page():
         #text = model.recognize_google(audio)
 
         text = 'some crap'
-        return {'msg':text}
+        return {'msg':text, 'saved_path':os.path.join(app.config["UPLOAD_DIR"], 'sample.wav')}
     else:
         return render_template('main.html')
 
