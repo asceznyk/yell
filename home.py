@@ -13,8 +13,9 @@ def main_page():
     if request.method == 'POST':
         model = sr.Recognizer()
 
-        file = request.data
-        file.save(os.path.join(app.config['UPLOAD_DIR'], 'sample.wav'))
+        f = open(os.path.join(app.config["UPLOAD_DIR"], 'sample.wav'), 'wb')
+        f.write(request.data)
+        f.close()
 
         #with sr.AudioFile('./file.wav') as source: print('blech!')
 
