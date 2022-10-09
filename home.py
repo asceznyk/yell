@@ -13,8 +13,8 @@ def main_page():
     if request.method == 'POST':
         model = sr.Recognizer()
 
-        file = request.files['file']
-        file.save(os.path.join(app.config['UPLOAD_DIR'], file.filename))
+        #file = request.files['file']
+        #file.save(os.path.join(app.config['UPLOAD_DIR'], file.filename))
 
         #f = open('./file.wav', 'wb')
         #f.write(request.data)
