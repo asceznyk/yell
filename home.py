@@ -5,17 +5,20 @@ import speech_recognition as sr
 from werkzeug.wrappers import Request, Response
 from flask import Flask, render_template, request
 
-
 app = Flask(__name__)
+app.config["UPLOAD_DIR"] = "temp"
 
 @app.route("/", methods=['GET', 'POST'])
 def main_page():
     if request.method == 'POST':
         model = sr.Recognizer()
 
-        f = open('./file.wav', 'wb')
-        f.write(request.data)
-        f.close()
+        file = request.files['file']
+        file.save(os.path.join(app.config['UPLOAD_DIR'], file.filename))
+
+        #f = open('./file.wav', 'wb')
+        #f.write(request.data)
+        #f.close()
 
         #with sr.AudioFile('./file.wav') as source: print('blech!')
 

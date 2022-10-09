@@ -1,6 +1,7 @@
 let record = document.getElementById("record")
 let stop = document.getElementById("stop")
 let audio = document.getElementById("raudio")
+let upload = document.getElementById("rupload")
 
 if (navigator.mediaDevices) {
 
