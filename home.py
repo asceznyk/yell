@@ -22,7 +22,7 @@ def main_page():
         #text = model.recognize_google(audio)
 
         text = 'some crap'
-        return {'msg':text}
+        return {'msg':text, 'rec': r}
     else:
         return render_template('main.html')
 
