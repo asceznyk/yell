@@ -1,7 +1,22 @@
 let record = document.getElementById("record")
 let stop = document.getElementById("stop")
 let audio = document.getElementById("raudio")
-let upload = document.getElementById("rupload")
+
+let fin = document.getElementById("rupload");
+let upload = (file) => {
+  fetch('/', {
+    method: 'POST',
+    body: file
+  })
+};
+let onSelectFile = () => upload(fin.files[0]);
+fin.onclick = function () {
+  this.value = null;
+};
+  
+fin.onchange = function () {
+  console.log('ohh gd!');
+};
 
 if (navigator.mediaDevices) {
 
