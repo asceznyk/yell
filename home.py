@@ -2,7 +2,7 @@ import os
 import io
 import speech_recognition as sr
 
-from scipy.io import wavfile
+#from scipy.io import wavfile
 from flask import Flask, render_template, request
 
 
