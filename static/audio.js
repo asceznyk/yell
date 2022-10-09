@@ -32,10 +32,10 @@ if (navigator.mediaDevices) {
           chunks.push(e.data);
 
           let blob = new Blob(chunks, {'type':'audio/wav; codecs=opus'})
-          audio.src = URL.createObjectURL(blob);
+          audio.src = URL.createObjectURL(blob)
 
           let audioData = new FormData()
-          audioData.append('audio', blob, 'audio.wav')
+          audioData.append('audio', blob)
           fetch('/', {
             method:'POST',
             body: audioData,
