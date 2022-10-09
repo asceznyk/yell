@@ -30,6 +30,7 @@ def main_page():
         text = 'some crap'
         return {'msg':text, 'saved_path':fp}
     else:
+        with open(f'{app.config["UPLOAD_DIR"]}/readme.txt', 'w') as f: f.write('readme')
         return render_template('main.html')
 
 if __name__ == '__main__':
