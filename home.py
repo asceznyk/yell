@@ -20,7 +20,7 @@ def main_page():
         f.write(request.data)
         f.close()
 
-        r = wavfile.read(fp, 'rb')
+        r = wavfile.read(fp)
 
         #with sr.AudioFile(fp) as source: print('blech!')
 
