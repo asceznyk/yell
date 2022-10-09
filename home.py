@@ -26,7 +26,8 @@ def main_page():
         #ra = wavfile.read(fp)
 
         text = ".."
-        with sr.AudioFile(fp) as source: print('blech!')
+        with sr.AudioFile(fp) as source: 
+            print('blech!')
             audio = model.listen(request.data)
         text = model.recognize_google(audio)
 
