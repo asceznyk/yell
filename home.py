@@ -15,12 +15,12 @@ def main_page():
         file_obj.write(f.read()) 
         file_obj.seek(0)
         
-        #mic = sr.AudioFile(file_obj)
-        #with mic as source:
-        #    audio = r.record(source)
-        #    text = model.recognize_google(audio)
+        mic = sr.AudioFile(file_obj)
+        with mic as source:
+            audio = model.record(source)
+            text = model.recognize_google(audio)
 
-        text = 'some crap'
+        #text = 'some crap'
         return {'msg':text}
     else:
         return render_template('main.html')
