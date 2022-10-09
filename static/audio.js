@@ -31,12 +31,14 @@ if (navigator.mediaDevices) {
         mediaRecorder.ondataavailable = (e) => {
           chunks.push(e.data);
 
-          let blob = new Blob(chunks, {'type':'audio/ogg; codecs=opus'})
+          let blob = new Blob(chunks, {'type':'audio/wav; codecs=opus'})
           audio.src = URL.createObjectURL(blob);
 
+          let audioData = new FormData()
+          audioData.append('audio', blob, 'audio.wav')
           fetch('/', {
             method:'POST',
-            body: JSON.stringify({'audio': audio.src})
+            body: audioData,
           }).then((response) => {
             chunks = []
             return response.json()

@@ -1,5 +1,5 @@
 import os
-import urllib.request
+import request
 from flask import Flask, render_template, request
 #from werkzeug import secure_filename
 
@@ -8,10 +8,7 @@ app = Flask(__name__)
 @app.route("/", methods=['GET', 'POST'])
 def main_page():
     if request.method == 'POST':
-        f = request.get_json(force=True)
-        f = urllib.request.urlopen(f['audio'])
-        with open('audio.ogg', 'wb') as out:
-            out.write(f.read())
+        audio = request.files.get('audio')
         return 'audio sent successfully'
     else:
         return render_template('main.html')
