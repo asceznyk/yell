@@ -2,6 +2,8 @@ import os
 import io
 import speech_recognition as sr
 
+from scipy.io import wavfile
+
 from werkzeug.wrappers import Request, Response
 from flask import Flask, render_template, request
 
@@ -18,7 +20,9 @@ def main_page():
         f.write(request.data)
         f.close()
 
-        with sr.AudioFile(fp) as source: print('blech!')
+        r = wavfile.read(fp, 'rb')
+
+        #with sr.AudioFile(fp) as source: print('blech!')
 
         #audio = model.listen(request.data)
         #text = model.recognize_google(audio)
