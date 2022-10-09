@@ -14,7 +14,14 @@
             </div>
             <div class="player">
                 <audio controls id="raudio"></audio>
-                <input type="file" id="rupload" name="audiof"/>
+                <form action="/audioinput" method="post">
+                    <div class="rightp">
+                        <div class="form-group">
+                            <input name="audiofile" id="audioupload" type="file"                name="audiof">
+                            <button class="but1" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="transcript"></div>
