@@ -34,9 +34,6 @@ if (navigator.mediaDevices) {
           let blob = new Blob(chunks, {'type':'audio/wav; codecs=opus'})
           audio.src = URL.createObjectURL(blob)
 
-          let audioData = new FormData()
-          audioData.append('audio', blob, 'sample.wav')
-
           fetch("/", {
             method: "post",
             body: blob
