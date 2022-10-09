@@ -16,7 +16,7 @@ def main_page():
         model = sr.Recognizer()
 
         fp = os.path.join(app.config["UPLOAD_DIR"], 'sample.wav')
-        audio = request.files['audiof']
+        #audio = request.files['audiof']
         #file.save(fp, 'wb')
 
         #f = open(fp, 'wb')
