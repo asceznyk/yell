@@ -15,22 +15,24 @@ def main_page():
     if request.method == 'POST':
         model = sr.Recognizer()
 
-        fp = os.path.join(app.config["UPLOAD_DIR"], 'sample.wav')
-        f = open(fp, 'wb')
-        f.write(request.data)
-        f.close()
+        #fp = os.path.join(app.config["UPLOAD_DIR"], 'sample.wav')
+        #f = open(fp, 'wb')
+        #f.write(request.data)
+        #f.close()
 
-        r = wavfile.read(fp)
+        #r = wavfile.read(fp)
 
         #with sr.AudioFile(fp) as source: print('blech!')
 
         #audio = model.listen(request.data)
         #text = model.recognize_google(audio)
 
-        text = 'some crap'
+        fp = f'{app.config["UPLOAD_DIR"]}/readme.txt'
+        with open(fp, 'w') as f: f.write('readme')
+        with open(fp, 'r') as f: text = f.read()
+
         return {'msg':text, 'saved_path':fp}
     else:
-        with open(f'{app.config["UPLOAD_DIR"]}/readme.txt', 'w') as f: f.write('readme')
         return render_template('main.html')
 
 if __name__ == '__main__':
