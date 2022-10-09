@@ -17,7 +17,7 @@ def main_page():
 
         fp = os.path.join(app.config["UPLOAD_DIR"], 'sample.wav')
         audio = request.files['audiof']
-        #file.save(fp, 'wb')
+        audio.save(fp)
 
         #f = open(fp, 'wb')
         #f.write(request.data)
