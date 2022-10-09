@@ -17,7 +17,7 @@ def main_page():
         f.write(request.data)
         f.close()
 
-        with open('./file.wav') as source: print('blech!')
+        with sr.AudioFile('./file.wav') as source: print('blech!')
 
         #audio = model.listen(r.read())
         #text = model.recognize_google(audio)
