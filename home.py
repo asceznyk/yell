@@ -15,7 +15,8 @@ def main_page():
         file_obj.write(f.read()) 
         file_obj.seek(0)
 
-        with sr.WavFile(file_obj) as source: audio = model.listen(source)
+        with sr.WavFile(file_obj) as source: print('able to read audio!')
+        #audio = model.listen(source)
         #text = model.recognize_google(audio)
 
         text = 'some crap'
