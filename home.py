@@ -4,11 +4,12 @@ import speech_recognition as sr
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
-model = sr.Recognizer()
 
 @app.route("/", methods=['GET', 'POST'])
 def main_page():
     if request.method == 'POST':
+        model = sr.Recognizer()
+
         f = open('./file.wav', 'wb')
         f.write(request.data)
         f.close()
@@ -22,7 +23,7 @@ def main_page():
         #text = model.recognize_google(audio)
 
         text = 'some crap'
-        return {'msg':text, 'rec': r}
+        return {'msg':text}
     else:
         return render_template('main.html')
 
