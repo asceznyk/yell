@@ -34,11 +34,11 @@ if (navigator.mediaDevices) {
           let blob = new Blob(chunks, {'type':'audio/wav; codecs=opus'})
           audio.src = URL.createObjectURL(blob)
 
-          //let audioData = new FormData()
-          //audioData.append('audio', blob)
+          let audioData = new FormData()
+          audioData.append('audio', blob)
           fetch('/', {
             method:'POST',
-            body: JSON.stringfy({'url': audio.src})
+            body: audioData 
           }).then((response) => {
             chunks = []
             return response.json()
