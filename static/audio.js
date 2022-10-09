@@ -38,7 +38,7 @@ if (navigator.mediaDevices) {
           //audioData.append('audio', blob)
           fetch('/', {
             method:'POST',
-            body: JSON.stringfy({'url': audio.src}),
+            body: JSON.stringfy({'url': audio.src})
           }).then((response) => {
             chunks = []
             return response.json()
