@@ -23,13 +23,13 @@ def main_page():
         #f.write(request.data)
         #f.close()
 
-        #ra = wavfile.read(fp)
+        ra = wavfile.read(fp)
 
         text = ".."
-        with sr.AudioFile(fp) as source: 
-            print('blech!')
-            audio = model.listen(request.data)
-        text = model.recognize_google(audio)
+        #with sr.AudioFile(fp) as source: 
+        #    print('blech!')
+        #    audio = model.listen(source)
+        #text = model.recognize_google(audio)
 
         return {'msg':text, 'saved_path':fp}
     else:
