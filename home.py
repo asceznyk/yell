@@ -7,7 +7,9 @@ app = Flask(__name__)
 def main_page():
     if request.method == 'POST':
         audio = request.files.get('audio')
-        return 'audio sent successfully'
+        with open('temp/audio.wav', 'wb') as out:
+            out.write(audio.read())
+        return {'msg':'audio sent successfully'}
     else:
         return render_template('main.html')
 
