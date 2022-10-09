@@ -14,13 +14,9 @@ def main_page():
         f.write(request.data)
         f.close()
 
-        r = open('./file.wav', 'rb')
-        r.read()
-
-        with sr.WavFile('./file.wav') as source:
-            print('able to read audio!')
-        #    audio = model.listen(source)
-        #text = model.recognize_google(audio)
+        r = open('./file.wav', 'rb') 
+        audio = model.listen(r)
+        text = model.recognize_google(audio)
 
         text = 'some crap'
         return {'msg':text}
