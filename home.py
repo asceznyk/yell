@@ -17,10 +17,10 @@ def main_page():
         f.write(request.data)
         f.close()
 
-        with sr.AudioFile('./file.wav') as source: print('blech!')
+        #with sr.AudioFile('./file.wav') as source: print('blech!')
 
-        #audio = model.listen(r.read())
-        #text = model.recognize_google(audio)
+        audio = model.listen(request.data)
+        text = model.recognize_google(audio)
 
         text = 'some crap'
         return {'msg':text}
