@@ -13,7 +13,7 @@ def main_page():
         f.write(request.data)
         f.close()
 
-        with sr.WavFile(file.wav) as source:
+        with sr.WavFile('./file.wav') as source:
             print('able to read audio!')
             audio = model.listen(source)
         #text = model.recognize_google(audio)
