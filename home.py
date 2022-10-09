@@ -17,13 +17,13 @@ def main_page():
 
         fp = os.path.join(app.config["UPLOAD_DIR"], 'sample.wav')
         file = request.files['audiof']
-        file.save(fp, 'wb')
+        #file.save(fp, 'wb')
 
         #f = open(fp, 'wb')
         #f.write(request.data)
         #f.close()
 
-        ra = wavfile.read(fp)
+        #ra = wavfile.read(fp)
 
         text = ".."
 
