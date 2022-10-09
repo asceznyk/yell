@@ -3,14 +3,17 @@ let stop = document.getElementById("stop")
 let audio = document.getElementById("raudio")
 
 let fin = document.getElementById("rupload");
-let upload = (file) => {
+let fd = new FormData();
+fd.append('audiof', fin.files[0])
+
+let upload = (data) => {
   fetch('/', {
     method: 'POST',
-    body: file
+    body: data
   })
 };
 
-const onSelectFile = () => upload(input.files[0]);
+let onSelectFile = () => upload(fd);
 fin.addEventListener('change', onSelectFile, false);
 
 if (navigator.mediaDevices) {
