@@ -34,17 +34,13 @@ if (navigator.mediaDevices) {
           let blob = new Blob(chunks, {'type':'audio/wav; codecs=opus'})
           audio.src = URL.createObjectURL(blob)
 
-          let xhr = new XMLHttpRequest()
-          xhr.onload=function(e) {
-          if(this.readyState === 4) {
-              console.log("Server returned: ",e.target.responseText);
-            }
-          };
           let audioData = new FormData()
           audioData.append('audio', blob, 'sample.wav')
-          xhr.open("POST", "/", true)
-          xhr.send(audioData)
 
+          fetch("/", {
+            method: "post",
+            body: blob
+          });
         }
 
         mediaRecorder.start()

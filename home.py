@@ -9,18 +9,20 @@ model = sr.Recognizer()
 @app.route("/", methods=['GET', 'POST'])
 def main_page():
     if request.method == 'POST':
-        f = request.files.get('audio')
+        data = request.data
+
+        #f = request.files.get('audio')
         
-        file_obj = io.BytesIO()  
-        file_obj.write(f.read()) 
-        file_obj.seek(0)
+        #file_obj = io.BytesIO()  
+        #file_obj.write(f.read()) 
+        #file_obj.seek(0)
 
         #with sr.AudioFile(file_obj) as source: print('able to read audio!')
         #audio = model.listen(source)
         #text = model.recognize_google(audio)
 
         text = 'some crap'
-        return {'msg':text, 'file':file_obj}
+        return {'msg':text}
     else:
         return render_template('main.html')
 
