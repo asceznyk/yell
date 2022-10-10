@@ -23,8 +23,8 @@ def main_page():
         #f.close()
  
         text = ".."
-        with sr.AudioFile(audio) as source: 
-            print('blech!')
+        #with sr.AudioFile(audio) as source: 
+            #print('blech!')
             #sound = model.listen(source)
         #text = model.recognize_google(audio)
 
