@@ -17,18 +17,15 @@ def main_page():
 
         fp = os.path.join(app.config["UPLOAD_DIR"], 'sample.wav')
         audio = request.files['audiof']
-        audio.save(fp)
 
         #f = open(fp, 'wb')
         #f.write(request.data)
         #f.close()
-
-        ra = wavfile.read(fp)
-
+ 
         text = ".."
-        #with sr.AudioFile(fp) as source: 
-        #    print('blech!')
-        #    audio = model.listen(source)
+        with sr.AudioFile(fp) as source: 
+            print('blech!')
+            audio = model.listen(source)
         #text = model.recognize_google(audio)
 
         return {'msg':text, 'saved_path':fp}
