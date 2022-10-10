@@ -14,12 +14,13 @@ app.config["UPLOAD_DIR"] = "temp"
 @app.route("/", methods=['GET', 'POST'])
 def main_page():
     if request.method == 'POST':
-        model = sr.Recognizer()
+        #model = sr.Recognizer()
         
         text = ".."
-        audio = request.files['audiof']
-        fp = os.path.join(app.config["UPLOAD_DIR"], audio.filename) 
-        audio.save(fp)
+        fp = "path/to/something"
+        #audio = request.files['audiof']
+        #fp = os.path.join(app.config["UPLOAD_DIR"], audio.filename) 
+        #audio.save(fp)
 
         #wave.open(fp, 'r')
 
