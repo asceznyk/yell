@@ -14,15 +14,18 @@ app.config["UPLOAD_DIR"] = "temp"
 def main_page():
     if request.method == 'POST':
         model = sr.Recognizer()
-
+        
+        text = ".."
         fp = os.path.join(app.config["UPLOAD_DIR"], 'sample.wav')
         audio = request.files['audiof']
+
+        with open(audio, 'rb') as f:
+            text = audio.read()
 
         #f = open(fp, 'wb')
         #f.write(request.data)
         #f.close()
  
-        text = ".."
         #with sr.AudioFile(audio) as source: 
             #print('blech!')
             #sound = model.listen(source)
