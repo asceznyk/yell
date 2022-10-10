@@ -15,7 +15,7 @@ def main_page():
     if request.method == 'POST':
         model = sr.Recognizer()
 
-        #fp = os.path.join(app.config["UPLOAD_DIR"], 'sample.wav')
+        fp = os.path.join(app.config["UPLOAD_DIR"], 'sample.wav')
         audio = request.files['audiof']
 
         #f = open(fp, 'wb')
@@ -23,8 +23,8 @@ def main_page():
         #f.close()
  
         text = ".."
-        #with sr.AudioFile(audio) as source: 
-            #print('blech!')
+        with sr.AudioFile(audio) as source: 
+            print('blech!')
             #sound = model.listen(source)
         #text = model.recognize_google(audio)
 
