@@ -4,7 +4,7 @@ import speech_recognition as sr
 
 from scipy.io import wavfile
 
-from werkzeug.wrappers import Request, Response
+from werkzeug import secure_filename 
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -16,9 +16,12 @@ def main_page():
         model = sr.Recognizer()
         
         text = ".."
-        fp = os.path.join(app.config["UPLOAD_DIR"], 'sample.wav')
         audio = request.files['audiof']
-        text = audio.readlines()
+        fp = os.path.join(app.config["UPLOAD_DIR"], audio.filename) 
+        audio.save(fp)
+
+        with open(fp) as f:
+            text = f.read()
 
         #f = open(fp, 'wb')
         #f.write(request.data)
