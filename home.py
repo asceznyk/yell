@@ -20,8 +20,7 @@ def main_page():
         fp = os.path.join(app.config["UPLOAD_DIR"], audio.filename) 
         audio.save(fp)
 
-        with open(fp) as f:
-            text = f.read()
+        rb = wavfile.read(fp)
 
         #f = open(fp, 'wb')
         #f.write(request.data)
