@@ -25,7 +25,7 @@ def main_page():
         text = ".."
         with sr.AudioFile(audio) as source: 
             print('blech!')
-            audio = model.listen(source)
+            #sound = model.listen(source)
         #text = model.recognize_google(audio)
 
         return {'msg':text, 'saved_path':fp}
