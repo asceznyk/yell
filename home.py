@@ -1,5 +1,6 @@
 import os
 import io
+import wave
 import speech_recognition as sr
 
 from scipy.io import wavfile
@@ -20,7 +21,9 @@ def main_page():
         fp = os.path.join(app.config["UPLOAD_DIR"], audio.filename) 
         audio.save(fp)
 
-        rb = wavfile.read(fp)
+        #wave.open(fp, 'r')
+
+        rb = wavfile.read('temp/sample.wav')
 
         #f = open(fp, 'wb')
         #f.write(request.data)
