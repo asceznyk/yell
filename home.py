@@ -18,9 +18,7 @@ def main_page():
         text = ".."
         fp = os.path.join(app.config["UPLOAD_DIR"], 'sample.wav')
         audio = request.files['audiof']
-
-        with open(audio, 'rb') as f:
-            text = f.read()
+        text = audio.readlines()
 
         #f = open(fp, 'wb')
         #f.write(request.data)
