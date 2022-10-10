@@ -20,7 +20,7 @@ def main_page():
         audio = request.files['audiof']
 
         with open(audio, 'rb') as f:
-            text = audio.read()
+            text = f.read()
 
         #f = open(fp, 'wb')
         #f.write(request.data)
