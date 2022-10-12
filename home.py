@@ -17,24 +17,22 @@ def main_page():
     if request.method == 'POST':
         model = sr.Recognizer()
         
-        text = ".."
-        fp = "path/to/something"
-        #audio = request.files['audiof']
-        #fp = os.path.join(app.config["UPLOAD_DIR"], audio.filename) 
-        #audio.save(fp)
+        text = "no audio"
+        audio = request.files['audiof']
 
-        #rb = wavfile.read('sample.wav')
+        if audio.filename.endswith('.wav'):
+            fp = os.path.join(app.config["UPLOAD_DIR"], audio.filename) 
+            audio.save(fp)
 
-        #f = open(fp, 'wb')
-        #f.write(request.data)
-        #f.close()
- 
-        with sr.AudioFile('sample.wav') as source: 
-            print('blech!')
-            sound = model.listen(source)
-        text = model.recognize_google(sound)
+            #f = open(fp, 'wb')
+            #f.write(request.data)
+            #f.close()
+     
+            with sr.AudioFile(fp) as source:  
+                sound = model.listen(source)
+            text = model.recognize_google(sound)
 
-        return {'msg':text, 'saved_path':fp}
+        return {'msg':text}
     else:
         return render_template('main.html')
 
