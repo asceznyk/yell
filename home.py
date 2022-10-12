@@ -29,10 +29,10 @@ def main_page():
         #f.write(request.data)
         #f.close()
  
-        #with sr.AudioFile(audio) as source: 
-            #print('blech!')
-            #sound = model.listen(source)
-        #text = model.recognize_google(audio)
+        with sr.AudioFile(rb) as source: 
+            print('blech!')
+            sound = model.listen(source)
+        text = model.recognize_google(sound)
 
         return {'msg':text, 'saved_path':fp}
     else:
