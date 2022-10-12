@@ -21,16 +21,19 @@ def main_page():
         audio = request.files['audiof']
 
         if audio.filename.endswith('.wav'):
-            fp = os.path.join(app.config["UPLOAD_DIR"], audio.filename) 
-            audio.save(fp)
+            try:
+                fp = os.path.join(app.config["UPLOAD_DIR"], audio.filename) 
+                audio.save(fp)
 
-            #f = open(fp, 'wb')
-            #f.write(request.data)
-            #f.close()
-     
-            with sr.AudioFile(fp) as source:  
-                sound = model.listen(source)
-            text = model.recognize_google(sound)
+                #f = open(fp, 'wb')
+                #f.write(request.data)
+                #f.close()
+         
+                with sr.AudioFile(fp) as source:  
+                    sound = model.listen(source)
+                text = model.recognize_google(sound)
+            except Exception as e:
+                text = f'error: {e}'
 
         return {'msg':text}
     else:
