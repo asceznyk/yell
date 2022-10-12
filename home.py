@@ -15,7 +15,7 @@ app.config["UPLOAD_DIR"] = "temp"
 @app.route("/", methods=['GET', 'POST'])
 def main_page():
     if request.method == 'POST':
-        #model = sr.Recognizer()
+        model = sr.Recognizer()
         
         text = ".."
         fp = "path/to/something"
