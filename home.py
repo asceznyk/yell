@@ -23,13 +23,13 @@ def main_page():
         #fp = os.path.join(app.config["UPLOAD_DIR"], audio.filename) 
         #audio.save(fp)
 
-        rb = wavfile.read('sample.wav')
+        #rb = wavfile.read('sample.wav')
 
         #f = open(fp, 'wb')
         #f.write(request.data)
         #f.close()
  
-        with sr.AudioFile(rb) as source: 
+        with sr.AudioFile('sample.wav') as source: 
             print('blech!')
             sound = model.listen(source)
         text = model.recognize_google(sound)
