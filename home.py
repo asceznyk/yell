@@ -7,7 +7,6 @@ import speech_recognition as sr
 
 from scipy.io import wavfile
 
-#from werkzeug import secure_filename 
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -24,7 +23,7 @@ def main_page():
         #fp = os.path.join(app.config["UPLOAD_DIR"], audio.filename) 
         #audio.save(fp)
 
-        #wave.open(fp, 'r')
+        wave.open('sample.wav', 'r')
 
         #rb = wavfile.read('sample.wav')
 
