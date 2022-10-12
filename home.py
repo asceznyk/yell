@@ -1,6 +1,8 @@
 import os
 import io
 import wave
+
+import numpy as np
 import speech_recognition as sr
 
 from scipy.io import wavfile
