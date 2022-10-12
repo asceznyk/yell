@@ -26,7 +26,7 @@ def main_page():
 
         #wave.open(fp, 'r')
 
-        rb = wavfile.read('sample.wav')
+        #rb = wavfile.read('sample.wav')
 
         #f = open(fp, 'wb')
         #f.write(request.data)
