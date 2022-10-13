@@ -19,7 +19,10 @@ def main_page():
         text = "no audio"
         try:
             fp = os.path.join(app.config["UPLOAD_DIR"], 'audio_sample.webm') 
-            request.data.save(fp)
+            
+            fx = open(fp, 'wb')
+            fx.write(request.data)
+            fx.close()
 
             webm = AudioSegment.from_file(fp, 'webm')
             webm.export(fp, format='wav')
