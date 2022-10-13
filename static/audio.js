@@ -5,6 +5,7 @@ let audio = document.getElementById("raudio")
 let fin = document.getElementById("rupload");
 
 let fd = new FormData();
+fd.append('audiof', '')
 
 let upload = (data) => {
   fetch('/', {
@@ -14,7 +15,7 @@ let upload = (data) => {
 };
 
 let onSelectFile = () => {
-  fd.append('audiof', fin.files[fin.files.length-1])
+  fd.set('audiof', fin.files[0])
   upload(fd);
 }
 fin.addEventListener('change', onSelectFile, false);
