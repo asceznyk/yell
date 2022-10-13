@@ -2,31 +2,13 @@ let record = document.getElementById("record")
 let stop = document.getElementById("stop")
 let audio = document.getElementById("raudio")
 
-let fin = document.getElementById("rupload");
-
-let fd = new FormData();
-fd.append('audiof', '')
-
-let upload = (data) => {
-  fetch('/', {
-    method: 'POST',
-    body: data
-  })
-};
-
-let onSelectFile = () => {
-  fd.set('audiof', fin.files[0])
-  upload(fd);
-}
-fin.addEventListener('change', onSelectFile, false);
-
 if (navigator.mediaDevices) {
 
   let chunks = [];
   navigator.mediaDevices.getUserMedia({ audio: true })
   .then((stream) => {
 
-    const mediaRecorder = new MediaRecorder(stream, {mimeType: 'audio/webm; codecs=opus'});
+    const mediaRecorder = new MediaRecorder(stream, {mimeType: 'audio/webm; codecs=opus'})
 
     record.onclick = () => {
       mediaRecorder.start();
@@ -48,12 +30,12 @@ if (navigator.mediaDevices) {
           chunks.push(e.data);
 
           let blob = new Blob(chunks)
-          audio.src = URL.createObjectURL(blob)
+          audio.src = URL.createObjectURL(blob) 
 
-          /*fetch("/", {
+          fetch("/", {
             method: "post",
             body: blob
-          });*/
+          });
         }
 
         mediaRecorder.start()

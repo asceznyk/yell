@@ -5,9 +5,8 @@ import wave
 import numpy as np
 import speech_recognition as sr
 
-from scipy.io import wavfile
-
 from flask import Flask, render_template, request
+from pydub import AudioSegment
 
 app = Flask(__name__)
 app.config["UPLOAD_DIR"] = "temp"
@@ -18,22 +17,18 @@ def main_page():
         model = sr.Recognizer()
         
         text = "no audio"
-        audio = request.files['audiof']
+        try:
+            fp = os.path.join(app.config["UPLOAD_DIR"], 'audio_sample.webm') 
+            request.data.save(fp)
 
-        if audio.filename.endswith('.wav'):
-            try:
-                fp = os.path.join(app.config["UPLOAD_DIR"], audio.filename) 
-                audio.save(fp)
-
-                #f = open(fp, 'wb')
-                #f.write(request.data)
-                #f.close()
-         
-                with sr.AudioFile(fp) as source:  
-                    sound = model.listen(source)
-                text = model.recognize_google(sound)
-            except Exception as e:
-                text = f'error: {e}'
+            webm = AudioSegment.from_file(fp, 'webm')
+            webm.export(fp, format='wav')
+     
+            with sr.AudioFile(fp.replace('webm', 'wav')) as source:  
+                sound = model.listen(source)
+            text = model.recognize_google(sound)
+        except Exception as e:
+            text = f'error: {e}'
 
         return {'msg':text}
     else:

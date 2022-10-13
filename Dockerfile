@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+ROM python:3.10-slim
 
 ENV PYTHONUNBUFFERED True
 
@@ -10,6 +10,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt install -y flac && rm -rf /var/lib/apt/lists/*
+RUN apt update && apt install -y ffmpeg
 
 CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 home:app
 
