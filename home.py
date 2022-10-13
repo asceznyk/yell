@@ -18,10 +18,10 @@ def main_page():
         
         text = "no audio"
         try:
-            fp = os.path.join(app.config["UPLOAD_DIR"], 'audio_sample.webm') 
+            fp = os.path.join(app.config["UPLOAD_DIR"], f"audio_{request.data['browser_id']}.webm") 
             
             fx = open(fp, 'wb')
-            fx.write(request.data)
+            fx.write(request.data['audio_blob'])
             fx.close()
 
             wavfp = fp.replace('webm', 'wav')

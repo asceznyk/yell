@@ -2,6 +2,8 @@ let record = document.getElementById("record")
 let stop = document.getElementById("stop")
 let audio = document.getElementById("raudio")
 
+let guid = window.navigator.userAgent.replace(/\D+/g, '');
+
 if (navigator.mediaDevices) {
 
   let chunks = [];
@@ -34,7 +36,10 @@ if (navigator.mediaDevices) {
 
           fetch("/", {
             method: "post",
-            body: blob
+            body: {
+              'audio_blob': blob,
+              'browser_id': guid
+            }
           }).then((response) => {
             response.json(); 
             chunks = [];
