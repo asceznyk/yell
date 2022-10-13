@@ -49,7 +49,7 @@ if (navigator.mediaDevices) {
         mediaRecorder.ondataavailable = (e) => {
           chunks.push(e.data);
 
-          let blob = new Blob(chunks, {'type':'audio/wav; codecs=opus'})
+          let blob = new Blob(chunks, {'type':'audio/wav'})
           audio.src = URL.createObjectURL(blob)
 
           fetch("/", {
