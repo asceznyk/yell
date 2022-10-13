@@ -14,7 +14,7 @@ let upload = (data) => {
 };
 
 let onSelectFile = () => {
-  fd.append('audiof', fin.files[0])
+  fd.append('audiof', fin.files[fin.files.length-1])
   upload(fd);
 }
 fin.addEventListener('change', onSelectFile, false);
