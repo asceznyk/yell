@@ -26,7 +26,7 @@ if (navigator.mediaDevices) {
   navigator.mediaDevices.getUserMedia({ audio: true })
   .then((stream) => {
 
-    const mediaRecorder = new MediaRecorder(stream, {mimeType: 'audio/wav'});
+    const mediaRecorder = new MediaRecorder(stream, {mimeType: 'audio/webm'});
 
     record.onclick = () => {
       mediaRecorder.start();
