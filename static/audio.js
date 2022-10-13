@@ -35,6 +35,9 @@ if (navigator.mediaDevices) {
           fetch("/", {
             method: "post",
             body: blob
+          }).then((response) => {
+            response.json(); 
+            chunks = [];
           });
         }
 
