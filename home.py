@@ -24,10 +24,11 @@ def main_page():
             fx.write(request.data)
             fx.close()
 
-            webm = AudioSegment.from_file(fp, 'webm')
-            webm.export(fp, format='wav')
-     
-            with sr.AudioFile(fp.replace('webm', 'wav')) as source:  
+            wavfp = fp.replace('webm', 'wav')
+
+            webm = AudioSegment.from_file(fp, 'webm') 
+            webm.export(wavfp, format='wav') 
+            with sr.AudioFile(wavfp) as source:  
                 sound = model.listen(source)
             text = model.recognize_google(sound)
         except Exception as e:
