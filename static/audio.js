@@ -34,12 +34,14 @@ if (navigator.mediaDevices) {
           let blob = new Blob(chunks)
           audio.src = URL.createObjectURL(blob) 
 
+          let fd = new FormData();
+          fd.append('audio_blob', blob)
+          fd.append('browser_id', guid)
+
           fetch("/", {
             method: "post",
-            body: {
-              'audio_blob': blob,
-              'browser_id': guid
-            }
+            body: fd,
+            
           }).then((response) => {
             response.json(); 
             chunks = [];
@@ -54,6 +56,7 @@ if (navigator.mediaDevices) {
     console.error(`The following error occurred: ${err}`);
   })
 }
+
 
 
 
