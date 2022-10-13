@@ -22,13 +22,11 @@ fin.addEventListener('change', onSelectFile, false);
 
 if (navigator.mediaDevices) {
 
-  const constraints = { audio: true };
   let chunks = [];
-
-  navigator.mediaDevices.getUserMedia(constraints)
+  navigator.mediaDevices.getUserMedia({ audio: true })
   .then((stream) => {
 
-    const mediaRecorder = new MediaRecorder(stream);
+    const mediaRecorder = new MediaRecorder(stream, {mimeType: 'audio/wav'});
 
     record.onclick = () => {
       mediaRecorder.start();
@@ -49,13 +47,13 @@ if (navigator.mediaDevices) {
         mediaRecorder.ondataavailable = (e) => {
           chunks.push(e.data);
 
-          let blob = new Blob(chunks, {'type':'audio/wav'})
+          let blob = new Blob(chunks)
           audio.src = URL.createObjectURL(blob)
 
-          fetch("/", {
+          /*fetch("/", {
             method: "post",
             body: blob
-          });
+          });*/
         }
 
         mediaRecorder.start()
