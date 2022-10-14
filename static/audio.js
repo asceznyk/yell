@@ -44,10 +44,13 @@ if (navigator.mediaDevices) {
             method: "post",
             body: fd,
             
-          }).then((response) => {
-            resMsg = response.json(); 
-            chunks = [];
-          });
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data)
+              resMsg = data;
+              chunks = [];
+            });
 
           let text = resMsg['msg'];
           if (!text.includes('err')) {
