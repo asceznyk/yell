@@ -1,12 +1,14 @@
 let record = document.getElementById("record")
 let stop = document.getElementById("stop")
 let audio = document.getElementById("raudio")
+let transcript = document.getElementById("transcript")
 
 let guid = window.navigator.userAgent.replace(/\D+/g, '');
 
 if (navigator.mediaDevices) {
 
   let chunks = [];
+  let resMsg = "";
   navigator.mediaDevices.getUserMedia({ audio: true })
   .then((stream) => {
 
@@ -43,9 +45,14 @@ if (navigator.mediaDevices) {
             body: fd,
             
           }).then((response) => {
-            response.json(); 
+            resMsg = response.json(); 
             chunks = [];
           });
+
+          let text = resMsg['msg'];
+          if (!text.includes('err')) {
+            transcript.innerHTML += `<p>${ text }</p>`;
+          }
         }
 
         mediaRecorder.start()
