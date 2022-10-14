@@ -35,7 +35,7 @@ if (navigator.mediaDevices) {
           audio.src = URL.createObjectURL(blob) 
 
           let fd = new FormData();
-          fd.append('audio_blob', blob)
+          fd.append('audio_blob', blob, `${guid}.webm`)
           fd.append('browser_id', guid)
 
           fetch("/", {

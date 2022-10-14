@@ -17,15 +17,15 @@ def main_page():
         model = sr.Recognizer()
         
         text = "no audio"
-        try:
-            fp = os.path.join(app.config["UPLOAD_DIR"], f"audio_{request.files['browser_id']}.webm") 
-            
-            fx = open(fp, 'wb')
-            fx.write(request.files['audio_blob'])
-            fx.close()
+        try: 
+            fp = os.path.join(app.config["UPLOAD_DIR"], f"audio_{request.files['audio_blob'].filename}") 
+            request.files['audio_blob'].save(fp)
+
+            #fx = open(fp, 'wb')
+            #fx.write(request.data)
+            #fx.close()
 
             wavfp = fp.replace('webm', 'wav')
-
             webm = AudioSegment.from_file(fp, 'webm') 
             webm.export(wavfp, format='wav') 
             with sr.AudioFile(wavfp) as source:  
