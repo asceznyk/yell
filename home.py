@@ -21,10 +21,6 @@ def main_page():
             fp = os.path.join(app.config["UPLOAD_DIR"], f"audio_{request.files['audio_blob'].filename}") 
             request.files['audio_blob'].save(fp)
 
-            #fx = open(fp, 'wb')
-            #fx.write(request.data)
-            #fx.close()
-
             wavfp = fp.replace('webm', 'wav')
             webm = AudioSegment.from_file(fp, 'webm') 
             webm.export(wavfp, format='wav') 
@@ -34,7 +30,7 @@ def main_page():
         except Exception as e:
             text = f'error: {e}'
 
-        return {'msg':text}
+        return {'msg':text, 'ip': request.files['browser_id']}
     else:
         return render_template('main.html')
 
