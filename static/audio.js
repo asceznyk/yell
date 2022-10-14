@@ -52,7 +52,7 @@ if (navigator.mediaDevices) {
               chunks = [];
             });
 
-          let text = resMsg['msg'];
+          let text = resMsg.msg;
           if (!text.includes('err')) {
             transcript.innerHTML += `<p>${ text }</p>`;
           }
