@@ -60,7 +60,7 @@ if (navigator.mediaDevices) {
 
         mediaRecorder.start()
       }
-    }, 3000);
+    }, 500);
   })
   .catch((err) => {
     console.error(`The following error occurred: ${err}`);
