@@ -49,11 +49,11 @@ if (navigator.mediaDevices) {
             .then((data) => {
               console.log(data)
               resMsg = data;
-              chunks = [];accessory
+              chunks = [];
             });
 
           let text = resMsg.msg;
-          if (!text.includes('err')) {
+          if (!text.includes('error')) {
             transcript.innerHTML += `<span>${ text }</span>`;
           }
         }
