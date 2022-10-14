@@ -54,7 +54,7 @@ if (navigator.mediaDevices) {
 
           let text = resMsg.msg;
           if (!text.includes('error')) {
-            transcript.innerHTML += `<span>${ text } </span>>`;
+            transcript.innerHTML += `<span>${ text } </span>`;
           }
         }
 
