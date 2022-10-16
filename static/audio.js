@@ -69,7 +69,7 @@ if (navigator.mediaDevices) {
         if (elapsed >= timeInt) {
           elapsed = 0;
           chunks = [];
-          totalTxt = text;
+          totalTxt += text;
         }
       }
     }, 500); 
