@@ -12,6 +12,7 @@ if (navigator.mediaDevices) {
   let timeInt = 4000;
   let elapsed = 0;
   let totalTxt = '';
+  let text = '';
 
   navigator.mediaDevices.getUserMedia({ audio: true })
   .then((stream) => {
@@ -55,23 +56,23 @@ if (navigator.mediaDevices) {
               resMsg = data; 
             });
 
-          let text = resMsg.msg; 
+          text = resMsg.msg; 
           if (!text.includes('err_msg')) {
-            totalTxt += `<span>${ text } </span>`;
-            transcript.innerHTML = totalTxt 
+            transcript.innerHTML = `<span> ${text} </span>` 
           }
         }
 
         mediaRecorder.start()
-        elasped += 500
-      }
-    }, 500);
+        elapsed += 500;
 
-    console.log(elapsed)
-    if (elapsed >= timeInt) {
-      elapsed = 0;
-      chunks = [] 
-    }
+        console.log(elapsed)
+        if (elapsed >= timeInt) {
+          elapsed = 0;
+          chunks = [];
+          //totalTxt = text;
+        }
+      }
+    }, 500); 
   })
   .catch((err) => {
     console.error(`The following error occurred: ${err}`);
