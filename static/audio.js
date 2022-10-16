@@ -69,7 +69,9 @@ if (navigator.mediaDevices) {
         if (elapsed >= timeInt) {
           elapsed = 0;
           chunks = [];
-          totalTxt += text;
+          if (!text.includes('err_msg')) {
+            totalTxt += ` ${text} `;
+          }
         }
       }
     }, 500); 
