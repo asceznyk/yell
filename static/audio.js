@@ -48,16 +48,15 @@ if (navigator.mediaDevices) {
 
           fetch("/", {
             method: "post",
-            body: fd,
-            
+            body: fd,  
           })
             .then((response) => response.json())
             .then((data) => {
               console.log(data)
               text = data.msg;
               if (!text.includes('err_msg')) {
-                updatedTxt = text;
-                transcript.innerHTML = `<span>${allTexts.join(' ')} </span>` 
+                //updatedTxt = text;
+                transcript.innerHTML = `<span>${text} </span>` //`<span>${allTexts.join(' ')} </span>` 
               } 
             }); 
         }
@@ -65,12 +64,12 @@ if (navigator.mediaDevices) {
         mediaRecorder.start()
         elapsed += 500;
  
-        if (elapsed >= timeInt) {
+        /*if (elapsed >= timeInt) {
           console.log(elapsed)
           elapsed = 0;
           chunks = [];
           allTexts.push(updatedTxt);
-        }
+        }*/
       }
     }, 500); 
   })
