@@ -56,9 +56,9 @@ if (navigator.mediaDevices) {
               resMsg = data; 
             });
 
-          text = resMsg.msg; 
+          text = resMsg.msg;
           if (!text.includes('err_msg')) {
-            transcript.innerHTML = `<span> ${text} </span>` 
+            transcript.innerHTML = `<span>${totalTxt} ${text} </span>` 
           }
         }
 
@@ -69,7 +69,7 @@ if (navigator.mediaDevices) {
         if (elapsed >= timeInt) {
           elapsed = 0;
           chunks = [];
-          //totalTxt = text;
+          totalTxt = text;
         }
       }
     }, 500); 
