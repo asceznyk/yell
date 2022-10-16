@@ -28,7 +28,7 @@ def main_page():
                 sound = model.listen(source)
             text = model.recognize_google(sound)
         except Exception as e:
-            text = f'error: {e}'
+            text = f'err_msg: {e}'
 
         return {'msg':text, 'ip': request.form['browser_id']}
     else:
@@ -36,4 +36,7 @@ def main_page():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
+
+
+
 

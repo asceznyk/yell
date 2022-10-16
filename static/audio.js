@@ -26,6 +26,9 @@ if (navigator.mediaDevices) {
       record.style.color = "";
     }
 
+    let timeInt = 4000;
+    let elapsed = 0;
+    let totalTxt = '';
     setInterval(function(e) { 
       if(mediaRecorder.state == "recording") {
         mediaRecorder.stop() 
@@ -48,24 +51,31 @@ if (navigator.mediaDevices) {
             .then((response) => response.json())
             .then((data) => {
               console.log(data)
-              resMsg = data;
-              chunks = [];
+              resMsg = data; 
             });
 
-          let text = resMsg.msg;
-          if (!text.includes('error')) {
-            transcript.innerHTML += `<span>${ text } </span>`;
+          let text = resMsg.msg; 
+          if (!text.includes('err_msg')) {
+            totalTxt += `<span>${ text } </span>`;
+            transcript.innerHTML = totalTxt 
           }
         }
 
         mediaRecorder.start()
+        elasped += 500
       }
-    }, 5000);
+    }, 500);
+
+    if (elapsed >= timeInt) { 
+      chunks = [] 
+    }
   })
   .catch((err) => {
     console.error(`The following error occurred: ${err}`);
   })
 }
+
+
 
 
 
