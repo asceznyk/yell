@@ -57,7 +57,7 @@ if (navigator.mediaDevices) {
               text = data.msg;
               if (!text.includes('err_msg')) {
                 updatedTxt = text;
-                transcript.innerHTML = `<span>${' '.join(allTexts)} ${text} </span>` 
+                transcript.innerHTML = `<span>${allTexts.join(' ')} ${text} </span>` 
               } 
             }); 
         }
