@@ -9,6 +9,10 @@ if (navigator.mediaDevices) {
 
   let chunks = [];
   let resMsg = "";
+  let timeInt = 4000;
+  let elapsed = 0;
+  let totalTxt = '';
+
   navigator.mediaDevices.getUserMedia({ audio: true })
   .then((stream) => {
 
@@ -26,9 +30,6 @@ if (navigator.mediaDevices) {
       record.style.color = "";
     }
 
-    let timeInt = 4000;
-    let elapsed = 0;
-    let totalTxt = '';
     setInterval(function(e) { 
       if(mediaRecorder.state == "recording") {
         mediaRecorder.stop() 
@@ -66,7 +67,9 @@ if (navigator.mediaDevices) {
       }
     }, 500);
 
-    if (elapsed >= timeInt) { 
+    console.log(elapsed)
+    if (elapsed >= timeInt) {
+      elapsed = 0;
       chunks = [] 
     }
   })
