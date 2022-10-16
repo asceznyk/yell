@@ -10,7 +10,7 @@ if (navigator.mediaDevices) {
   let chunks = [];
   let allTexts = []
   let resMsg = "";
-  let timeInt = 4000;
+  let timeInt = 2000;
   let elapsed = 0;
   let updatedTxt = '';
   let text = '';
