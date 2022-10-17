@@ -5,15 +5,15 @@ let transcript = document.getElementById("transcript")
 
 let guid = window.navigator.userAgent.replace(/\D+/g, '');
 
-if (navigator.mediaDevices) {
+let chunks = [];
+let allTexts = []
+let resMsg = "";
+let timeInt = 4000;
+let elapsed = 0;
+let updatedTxt = '';
+let text = '';
 
-  let chunks = [];
-  let allTexts = []
-  let resMsg = "";
-  let timeInt = 4000;
-  let elapsed = 0;
-  let updatedTxt = '';
-  let text = '';
+if (navigator.mediaDevices) {
 
   navigator.mediaDevices.getUserMedia({ audio: true })
   .then((stream) => {
