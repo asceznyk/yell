@@ -7,8 +7,7 @@ let guid = window.navigator.userAgent.replace(/\D+/g, '');
 
 let chunks = [];
 let allTexts = []
-let resMsg = "";
-let timeInt = 4000;
+let reqInt = 4;
 let elapsed = 0;
 let updatedTxt = '';
 let text = '';
@@ -58,19 +57,19 @@ if (navigator.mediaDevices) {
                 updatedTxt = text;
                 transcript.innerHTML = `<span>${allTexts.join(' ')} </span>` 
               } 
+
+              elapsed += 1
+              if (elapsed >= reqInt) {
+                console.log(elapsed)
+                elapsed = 0;
+                chunks = [];
+                allTexts.push(updatedTxt);
+                updatedTxt = '';
+              }
             }); 
         }
 
-        mediaRecorder.start()
-        elapsed += 500;
- 
-        if (elapsed >= timeInt) {
-          console.log(elapsed)
-          elapsed = 0;
-          chunks = [];
-          allTexts.push(updatedTxt);
-          updatedTxt = '';
-        }
+        mediaRecorder.start() 
       }
     }, 500); 
   })
