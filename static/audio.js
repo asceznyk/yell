@@ -6,8 +6,7 @@ let transcript = document.getElementById("transcript")
 let guid = window.navigator.userAgent.replace(/\D+/g, '');
 
 let chunks = [];
-let allTexts = []
-let updatedTxt = '';
+let allTexts = [];
 let text = '';
 
 if (navigator.mediaDevices) {
