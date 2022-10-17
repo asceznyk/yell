@@ -7,8 +7,6 @@ let guid = window.navigator.userAgent.replace(/\D+/g, '');
 
 let chunks = [];
 let allTexts = []
-let reqInt = 4;
-let elapsed = 0;
 let updatedTxt = '';
 let text = '';
 
@@ -54,24 +52,16 @@ if (navigator.mediaDevices) {
               console.log(data)
               text = data.msg;
               if (!text.includes('err_msg')) {
-                updatedTxt = text;
+                allTexts.push(text);
                 transcript.innerHTML = `<span>${allTexts.join(' ')} </span>` 
               } 
-
-              elapsed += 1
-              if (elapsed >= reqInt) {
-                console.log(elapsed)
-                elapsed = 0;
-                chunks = [];
-                allTexts.push(updatedTxt);
-                updatedTxt = '';
-              }
+              chunks = [];
             }); 
         }
 
         mediaRecorder.start() 
       }
-    }, 500); 
+    }, 3000); 
   })
   .catch((err) => {
     console.error(`The following error occurred: ${err}`);
