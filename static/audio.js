@@ -35,9 +35,7 @@ if (navigator.mediaDevices) {
         mediaRecorder.ondataavailable = (e) => {
           chunks.push(e.data);
 
-          let blob = new Blob(chunks)
-          audio.src = URL.createObjectURL(blob) 
-
+          let blob = new Blob(chunks);
           let fd = new FormData();
           fd.append('audio_blob', blob, `${guid}.webm`)
           fd.append('browser_id', guid)
