@@ -1,6 +1,7 @@
+//let audio = document.getElementById("raudio")
+
 let record = document.getElementById("record")
 let stop = document.getElementById("stop")
-let audio = document.getElementById("raudio")
 let transcript = document.getElementById("transcript")
 
 let guid = window.navigator.userAgent.replace(/\D+/g, '');
