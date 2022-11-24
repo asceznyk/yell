@@ -1,5 +1,3 @@
-//let audio = document.getElementById("raudio")
-
 let record = document.getElementById("record")
 let stop = document.getElementById("stop")
 let transcript = document.getElementById("transcript")
