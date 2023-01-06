@@ -2,6 +2,8 @@ import os
 import io
 import wave
 
+import tempfile
+
 import numpy as np
 import speech_recognition as sr
 
@@ -9,7 +11,15 @@ from flask import Flask, render_template, request
 from pydub import AudioSegment
 
 app = Flask(__name__)
-app.config["UPLOAD_DIR"] = "temp"
+
+tempdir = "/tmp/"
+for fname in os.listdir(tempdir): 
+    if fname.startswith("yell_user_data_"): 
+        app.config["UPLOAD_DIR"] = f"{tempdir}{fname}"
+        break
+else: 
+    app.config["UPLOAD_DIR"] = tempfile.mkdtemp(prefix="yell_user_data_")
+
 model = sr.Recognizer()
 
 @app.route("/", methods=['GET', 'POST'])

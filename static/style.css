@@ -12,12 +12,13 @@ html, body {
 
 .btn {
 	border:none;
-	border-radius: 5px;
+	border-radius:5px;
 	padding:5px;
 	min-width:50px;
 	text-align:center;
 	background:#F5EDCE; 
 	font-family:inherit;
+	transition: all, 0.5s;
 }
 
 .btn:hover {

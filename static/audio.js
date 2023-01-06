@@ -19,7 +19,7 @@ if (navigator.mediaDevices) {
       stopped = 0;
       mediaRecorder.start();
       record.style.background = "red";
-      record.style.color = "black";
+      record.style.color = "white";
     }
 
     stop.onclick = () => {
@@ -27,7 +27,7 @@ if (navigator.mediaDevices) {
       stopped = 1;
       mediaRecorder.stop();
       record.style.background = "";
-      record.style.color = "";
+      record.style.color = "black";
     }
 
     setInterval(function() { 
