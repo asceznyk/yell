@@ -58,6 +58,7 @@ if (navigator.mediaDevices) {
           }
         }
       }
+      console.log('emptying chunks..');
       chunks = [];
     }, 2000); 
   })
