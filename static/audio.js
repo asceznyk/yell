@@ -54,11 +54,11 @@ if (navigator.mediaDevices) {
                 allTexts.push(text);
                 transcript.innerHTML = `<span>${allTexts.join(' ')} </span>` 
               } 
-              chunks = [];
             });  
           }
         }
       }
+      chunks = [];
     }, 2000); 
   })
   .catch((err) => {
