@@ -27,6 +27,10 @@ if (navigator.mediaDevices) {
       record.style.color = "";
     }
 
+    mediaRecorder.onstop = (e) => {
+      e.preventDefault();
+    }
+
     setInterval(function() { 
       if(mediaRecorder.state == "recording") {
         mediaRecorder.stop();
