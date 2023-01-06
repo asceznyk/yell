@@ -1,6 +1,8 @@
 const audioTag = document.getElementById("player");
 const transcriptDiv = document.getElementById("transcript");
-const playCtx = customAudioPlayer(audioTag);
+
+const audioPlayer = document.querySelector(".audio-player");
+//const playCtx = customAudioPlayer(audioTag);
 
 let guid = window.navigator.userAgent.replace(/\D+/g, '');
 
@@ -17,21 +19,11 @@ function pauseAudio(audio, btn) {
 }
 
 function customAudioPlayer(audio) {
-	const audioPlayer = document.querySelector(".audio-player");
 	const playBtn = audioPlayer.querySelector(".controls .toggle-play");
 	const timeline = audioPlayer.querySelector(".timeline");
 	const progressBar = audioPlayer.querySelector(".progress");
 	const volumeBtn = audioPlayer.querySelector(".volume-button");
 	const volumeEl = audioPlayer.querySelector(".volume-container .volume"); 
-
-	audio.addEventListener(
-		"loadeddata",
-		() => {
-			audioPlayer.querySelector(".time .length").textContent = getTimeCodeFromNum(audio.duration);
-			audio.volume = .75;
-		},
-		false
-	);
 
 	timeline.addEventListener("click", e => {
 		const timelineWidth = window.getComputedStyle(timeline).width;
@@ -65,10 +57,7 @@ function customAudioPlayer(audio) {
 	});
 
 	setInterval(() => {
-		progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
-		audioPlayer.querySelector(".time .current").textContent = getTimeCodeFromNum(
-			audio.currentTime
-		);
+		progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";	
 		if (audio.currentTime >= audio.duration) {
 			pauseAudio(audio, playBtn);
 		}
