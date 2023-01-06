@@ -7,6 +7,7 @@ let guid = window.navigator.userAgent.replace(/\D+/g, '');
 let chunks = [];
 let allTexts = [];
 let text = '';
+let stopped = 0;
 
 if (navigator.mediaDevices) {
   navigator.mediaDevices.getUserMedia({audio: true})
@@ -15,6 +16,7 @@ if (navigator.mediaDevices) {
 
     record.onclick = () => {
       console.log('start recording');
+      stopped = 0;
       mediaRecorder.start();
       record.style.background = "red";
       record.style.color = "black";
@@ -22,25 +24,24 @@ if (navigator.mediaDevices) {
 
     stop.onclick = () => {
       console.log('stop recording');
+      stopped = 1;
       mediaRecorder.stop();
       record.style.background = "";
       record.style.color = "";
     }
 
-    mediaRecorder.onstop = (e) => {
-      e.preventDefault();
-    }
-
     setInterval(function() { 
       if(mediaRecorder.state == "recording") {
         mediaRecorder.stop();
-
         mediaRecorder.ondataavailable = (e) => { 
           chunks.push(e.data); 
           let fd = new FormData();
           fd.append('audio_blob', new Blob(chunks), `${guid}.webm`)
           fd.append('browser_id', guid)
-          mediaRecorder.start();
+
+          if (!stopped) {
+            mediaRecorder.start();
+          }
 
           console.log('sending audio request..');
           fetch("/", {
