@@ -79,7 +79,7 @@ function customAudioPlayer(audio) {
 	return playBtn;
 }
 
-function liveAudioSpeechRecognition(audio) {
+function liveAudioSpeechRecognition() {
 	let recordBtn = document.getElementById("record");
 	let stopBtn = document.getElementById("stop");
 
@@ -102,7 +102,7 @@ function liveAudioSpeechRecognition(audio) {
         mediaRecorder.stop();
         record.style.background = "";
         record.style.color = "black";
-				audio.src = URL.createObjectURL(new Blob(allChunks));
+				audioTag.src = URL.createObjectURL(new Blob(allChunks));
       }
 
       setInterval(function() { 
@@ -145,7 +145,7 @@ function liveAudioSpeechRecognition(audio) {
   }
 }
 
-liveAudioSpeechRecognition(audioTag);
+liveAudioSpeechRecognition();
 
 
 
