@@ -5,6 +5,127 @@ html, body {
 	font-family: monospace;
 }
 
+.audio-player {
+	background: #264653;
+	color: white;
+	overflow: hidden;
+	display: grid;
+}
+
+.audio-player .timeline {
+	background: white;
+	width: 70%;
+	position: relative;
+	cursor: pointer;
+	height: 5px;
+	margin: auto;
+	border-radius: 5px;
+}
+.audio-player .timeline .progress {
+	background: #E9C46A;
+	width: 0%;
+	height: 100%;
+	transition: 0.25s;
+	border-radius:5px;
+}
+.audio-player .controls {
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+.audio-player .controls > * {
+	display: flex;
+}
+
+.audio-player .controls>.play-container, .controls>.volume-container, .controls>.time {
+	justify-content: center;
+	align-items: center;
+} 
+
+.audio-player .controls>.timeline {
+	justify-content: left;
+	align-items: flex-start;
+}
+
+.audio-player .controls .toggle-play.play {
+	cursor: pointer;
+	position: relative;
+	left: 0;
+	height: 0;
+	width: 0;
+	border: 5px solid transparent;
+	border-left: 10px solid white;
+}
+
+.audio-player .controls .toggle-play.pause {
+	height: 10px;
+	width: 15px;
+	cursor: pointer;
+	position: relative;
+}
+.audio-player .controls .toggle-play.pause:before {
+	position: absolute;
+	top: 0;
+	left: 0px;
+	background: white;
+	content: "";
+	height: 10px;
+	width: 2px;
+}
+
+.audio-player .controls .toggle-play.pause:after {
+	position: absolute;
+	top: 0;
+	right: 8px;
+	background: white;
+	content: "";
+	height: 10px;
+	width: 2px;
+}
+
+.audio-player .controls .time {
+	display: flex;
+	margin: auto;
+}
+
+.audio-player .controls .time > * {
+	padding: 2px;
+}
+
+.audio-player .controls .volume-container {
+	cursor: pointer;
+	position: relative;
+	z-index: 2;
+	margin-left: auto;
+}
+
+.audio-player .controls .volume-container .volume-button {
+	height: 26px;
+	display: flex;
+	align-items: center;
+}
+
+.audio-player .controls .volume-container .volume-slider {
+	position: absolute;
+	left: 0px;
+	z-index: -1;
+	width: 0;
+	height: 5px;
+	border-radius: 5px;
+	background: white;
+	transition: 0.25s;
+}
+.audio-player .controls .volume-container .volume-slider .volume-percentage {
+	background: #E9C46A;
+	height: 100%;
+	width: 75%;
+}
+.audio-player .controls .volume-container:hover .volume-slider {
+	left: -123px;
+	width: 120px;
+}
+
 .wrapper {
 	margin:auto;
 	max-width: 500px;
