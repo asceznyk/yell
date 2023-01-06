@@ -22,6 +22,7 @@ html, body {
 
 .header a {
 	color: #58287F; 
+	transition: all, 0.5s;
 }
 
 .header a:hover {
