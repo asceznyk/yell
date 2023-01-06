@@ -33,7 +33,7 @@ def main_page():
         return render_template('main.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
+    app.run(debug=True, ssl_context='adhoc', host='0.0.0.0', port=os.environ.get('PORT', 5000))
 
 
 
