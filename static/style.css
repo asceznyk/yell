@@ -13,6 +13,7 @@ html, body {
 .wrapper div {
 	margin-top:0px;
 	margin-bottom:15px;
+	width:-webkit-fill-available;
 }
 
 .wrapper p {
