@@ -8,7 +8,7 @@ let guid = window.navigator.userAgent.replace(/\D+/g, '');
 
 let chunks = [];
 let text = '';
-let allChunks = []
+let allChunks = [];
 let allTexts = [];
 let stopped = 0;
 
@@ -102,14 +102,15 @@ function liveAudioSpeechRecognition(audio) {
         mediaRecorder.stop();
         record.style.background = "";
         record.style.color = "black";
+				audio.src = URL.createObjectURL(new Blob(allChunks));
       }
 
       setInterval(function() { 
-        if(mediaRecorder.state == "recording") { 
+        if(mediaRecorder.state == "recording") {
+					mediaRecorder.stop();
           mediaRecorder.ondataavailable = (e) => { 
             chunks.push(e.data);
 						allChunks.push(e.data);
-						audio.src = URL.createObjectURL(new Blob(allChunks));
 
             let fd = new FormData();
             fd.append('audio_blob', new Blob(chunks), `${guid}.webm`)
