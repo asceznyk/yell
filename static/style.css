@@ -10,7 +10,12 @@ html, body {
 	max-width: 500px;
 }
 
-.header p {
+.wrapper p {
+	margin-top:0px;
+	margin-bottom:15px;
+}
+
+.header a {
 	color: #58287F; 
 }
 
