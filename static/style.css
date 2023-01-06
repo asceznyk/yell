@@ -21,6 +21,11 @@ html, body {
 	margin-bottom:5px;
 }
 
+.header h2 {
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
 .header a {
 	color: #58287F; 
 	transition: all, 0.5s;
