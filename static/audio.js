@@ -14,12 +14,14 @@ if (navigator.mediaDevices) {
     const mediaRecorder = new MediaRecorder(stream, {mimeType: 'audio/webm; codecs=opus'})
 
     record.onclick = () => {
+      console.log('start recording');
       mediaRecorder.start();
       record.style.background = "red";
       record.style.color = "black";
     }
 
     stop.onclick = () => {
+      console.log('stop recording');
       mediaRecorder.stop();
       record.style.background = "";
       record.style.color = "";
@@ -43,7 +45,6 @@ if (navigator.mediaDevices) {
           })
           .then((response) => response.json())
           .then((data) => {
-            console.log(data)
             text = data.msg;
             if (!text.includes('err_msg')) {
               allTexts.push(text);
