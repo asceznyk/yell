@@ -70,8 +70,3 @@ if (navigator.mediaDevices) {
 
 
 
-
-
-
-
-
