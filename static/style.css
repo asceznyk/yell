@@ -3,6 +3,7 @@ html, body {
 	color: #FFF;
 	background: #1A0000;
 	font-family: monospace;
+	font-size: 13px;
 }
 
 .audio-player {
@@ -21,6 +22,7 @@ html, body {
 	margin: auto;
 	border-radius: 5px;
 }
+
 .audio-player .timeline .progress {
 	background: #E9C46A;
 	width: 0%;
@@ -28,6 +30,7 @@ html, body {
 	transition: 0.25s;
 	border-radius:5px;
 }
+
 .audio-player .controls {
 	display: flex;
 	justify-content: space-between;
