@@ -134,7 +134,7 @@ html, body {
 	max-width: 500px;
 }
 
-.wrapper div {
+.wrapper>div {
 	margin-top:0px;
 	margin-bottom:15px;
 	width:-webkit-fill-available;
