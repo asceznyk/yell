@@ -9,9 +9,8 @@ let allTexts = [];
 let text = '';
 
 if (navigator.mediaDevices) {
-  navigator.mediaDevices.getUserMedia({ audio: true })
+  navigator.mediaDevices.getUserMedia({audio: true})
   .then((stream) => {
-
     const mediaRecorder = new MediaRecorder(stream, {mimeType: 'audio/webm; codecs=opus'})
 
     record.onclick = () => {
@@ -26,8 +25,10 @@ if (navigator.mediaDevices) {
       record.style.color = "";
     }
 
-    setInterval(function(e) {  
-      chunks.push(e.data);
+    setInterval(function() { 
+      console.log(mediaRecorder.requestData())
+
+      /*chunks.push(mediaRecorder.requestData());
 
       let blob = new Blob(chunks);
       let fd = new FormData();
@@ -48,7 +49,7 @@ if (navigator.mediaDevices) {
             transcript.innerHTML = `<span>${allTexts.join(' ')} </span>` 
           } 
           chunks = [];
-        });  
+        }); */
     }, 4000); 
   })
   .catch((err) => {
