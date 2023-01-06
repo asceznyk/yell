@@ -40,23 +40,23 @@ if (navigator.mediaDevices) {
           fd.append('browser_id', guid)
 
           if (!stopped) {
-            mediaRecorder.start();
-          }
+            console.log('resuming media and sending audio request..');
 
-          console.log('sending audio request..');
-          fetch("/", {
-            method: "post",
-            body: fd,  
-          })
-          .then((response) => response.json())
-          .then((data) => {
-            text = data.msg;
-            if (!text.includes('err_msg')) {
-              allTexts.push(text);
-              transcript.innerHTML = `<span>${allTexts.join(' ')} </span>` 
-            } 
-            chunks = [];
-          });  
+            mediaRecorder.start();
+            fetch("/", {
+              method: "post",
+              body: fd,  
+            })
+            .then((response) => response.json())
+            .then((data) => {
+              text = data.msg;
+              if (!text.includes('err_msg')) {
+                allTexts.push(text);
+                transcript.innerHTML = `<span>${allTexts.join(' ')} </span>` 
+              } 
+              chunks = [];
+            });  
+          }
         }
       }
     }, 4000); 
