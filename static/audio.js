@@ -59,7 +59,7 @@ if (navigator.mediaDevices) {
           }
         }
       }
-    }, 4000); 
+    }, 2000); 
   })
   .catch((err) => {
     console.error(`The following error occurred: ${err}`);
