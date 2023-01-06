@@ -1,16 +1,13 @@
 html, body {
 	margin:0;
-	color: #fff;
+	color: #1A0000;
 	background: #000;
+	font-family: monospace;
 }
 
 .wrapper {
 	margin:auto;
 	max-width: 500px;
-}
-
-.header, .design, .transcript {
-	text-align:center;
 }
 
 .btn {
@@ -19,7 +16,8 @@ html, body {
 	padding:5px;
 	min-width:50px;
 	text-align:center;
-	background:blanchedalmond
+	background:#F5EDCE; 
+	font-family:inherit;
 }
 
 .btn:hover {
@@ -32,15 +30,14 @@ html, body {
 
 .transcript {
 	border: 1px solid;
-	text-align: center;
-	color: #fff;
+	color: inherit;
 	padding: 5px;
+	font-family:inherit;
 }
 
 @media only screen and (max-width: 600px) {
 	.wrapper {
-		width: 90vw;
-		
+		width: 90vw;	
 	}
 }
 
