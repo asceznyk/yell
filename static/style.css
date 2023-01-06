@@ -10,13 +10,22 @@ html, body {
 	max-width: 500px;
 }
 
-.wrapper p {
+.wrapper div {
 	margin-top:0px;
 	margin-bottom:15px;
 }
 
+.wrapper p {
+	margin-top:0px;
+	margin-bottom:5px;
+}
+
 .header a {
 	color: #58287F; 
+}
+
+.header a:hover {
+	color: #F5EDCE;
 }
 
 .btn {
