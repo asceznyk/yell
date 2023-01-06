@@ -26,30 +26,33 @@ if (navigator.mediaDevices) {
     }
 
     setInterval(function() { 
-      console.log(mediaRecorder.requestData())
+      if(mediaRecorder.state == "recording") {
+        mediaRecorder.stop();
 
-      /*chunks.push(mediaRecorder.requestData());
+        mediaRecorder.ondataavailable = (e) => { 
+          chunks.push(e.data); 
+          let fd = new FormData();
+          fd.append('audio_blob', new Blob(chunks), `${guid}.webm`)
+          fd.append('browser_id', guid)
+          mediaRecorder.start();
 
-      let blob = new Blob(chunks);
-      let fd = new FormData();
-      fd.append('audio_blob', blob, `${guid}.webm`)
-      fd.append('browser_id', guid)
-
-      console.log('sending audio request..');
-      fetch("/", {
-        method: "post",
-        body: fd,  
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data)
-          text = data.msg;
-          if (!text.includes('err_msg')) {
-            allTexts.push(text);
-            transcript.innerHTML = `<span>${allTexts.join(' ')} </span>` 
-          } 
-          chunks = [];
-        }); */
+          console.log('sending audio request..');
+          fetch("/", {
+            method: "post",
+            body: fd,  
+          })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data)
+            text = data.msg;
+            if (!text.includes('err_msg')) {
+              allTexts.push(text);
+              transcript.innerHTML = `<span>${allTexts.join(' ')} </span>` 
+            } 
+            chunks = [];
+          });  
+        }
+      }
     }, 4000); 
   })
   .catch((err) => {
