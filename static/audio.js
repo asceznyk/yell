@@ -1,8 +1,8 @@
 const audioTag = document.getElementById("player");
 const transcriptDiv = document.getElementById("transcript");
-
 const audioPlayer = document.querySelector(".audio-player");
-//const playCtx = customAudioPlayer(audioTag);
+
+let playCtx = customAudioPlayer(audioTag);
 
 let guid = window.navigator.userAgent.replace(/\D+/g, '');
 
