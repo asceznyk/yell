@@ -7,7 +7,7 @@ html, body {
 }
 
 .audio-player {
-	background: #264653;
+	background: inherit;
 	color: white;
 	overflow: hidden;
 	display: grid;
@@ -24,7 +24,7 @@ html, body {
 }
 
 .audio-player .timeline .progress {
-	background: #E9C46A;
+	background: #F5EDCE;
 	width: 0%;
 	height: 100%;
 	transition: 0.25s;
