@@ -56,12 +56,12 @@ function customAudioPlayer(audio) {
 		}
 	});
 
-	setInterval(() => {
+	/*setInterval(() => {
 		progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";	
-		if (audio.currentTime >= audio.duration) {
-			pauseAudio(audio, playBtn);
-		}
-	}, 500);
+		//if (audio.currentTime >= audio.duration) {
+			//pauseAudio(audio, playBtn);
+		//}
+	}, 500);*/
 
 	function getTimeCodeFromNum(num) {
 		let seconds = parseInt(num);
