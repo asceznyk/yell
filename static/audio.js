@@ -2,8 +2,6 @@ const audioTag = document.getElementById("player");
 const transcriptDiv = document.getElementById("transcript");
 const audioPlayer = document.querySelector(".audio-player");
 
-let playCtx = customAudioPlayer(audioTag);
-
 let guid = window.navigator.userAgent.replace(/\D+/g, '');
 
 let text = '';
@@ -52,11 +50,9 @@ function customAudioPlayer(audio) {
 	}, 500);
 
 	audio.onended = (e) => {
-		alert("done playing audio!");
 		audio.src = URL.createObjectURL(new Blob(allChunks));
+		pauseAudio(audio, playBtn);
 	}
-
-	return playBtn;
 }
 
 function liveAudioSpeechRecognition(audio) {
@@ -129,6 +125,7 @@ function liveAudioSpeechRecognition(audio) {
 	}
 }
 
+customAudioPlayer(audioTag);
 liveAudioSpeechRecognition(audioTag);
 
 
