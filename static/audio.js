@@ -98,7 +98,7 @@ if (navigator.mediaDevices) {
 			record.style.color = "white";
 		}
 
-		stopBtn.onclick = () => {
+		stopBtn.onclick = (e) => {
 			console.log('stop recording');
 			stopped = 1;
 			mediaRecorder.stop();
@@ -106,6 +106,7 @@ if (navigator.mediaDevices) {
 			record.style.color = "black";
 			console.log(allChunks)
 			audioTag.src = URL.createObjectURL(new Blob(allChunks));
+			e.preventDefault();
 		}
 
 		setInterval(function() { 
