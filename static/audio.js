@@ -111,34 +111,35 @@ if (navigator.mediaDevices) {
 
 		setInterval(function() { 
 			if(mediaRecorder.state == "recording") {
-				mediaRecorder.stop();
-				mediaRecorder.ondataavailable = (e) => {
-					console.log('ondataavailable1 fired!');
-					allChunks.push(e.data);
-					if (!stopped) {
-						let fd = new FormData();
-						fd.append('audio_blob', new Blob([e.data]), `${guid}.webm`)
-						fd.append('browser_id', guid)
-
-						console.log('resuming media and sending audio request..');
-
-						mediaRecorder.start();
-						fetch("/", {
-							method: "post",
-							body: fd,  
-						})
-						.then((response) => response.json())
-						.then((data) => {
-							text = data.msg;
-							if (!text.includes('err_msg')) {
-								allTexts.push(text);
-								transcriptDiv.innerHTML = `<span>${allTexts.join(' ')} </span>` 
-							} 
-						}); 
-					} 	
-				}
+				mediaRecorder.stop();	
 			}	
 		}, 2000);
+
+		mediaRecorder.ondataavailable = (e) => {
+			console.log('ondataavailable1 fired!');
+			allChunks.push(e.data);
+			if (!stopped) {
+				let fd = new FormData();
+				fd.append('audio_blob', new Blob([e.data]), `${guid}.webm`)
+				fd.append('browser_id', guid)
+
+				console.log('resuming media and sending audio request..');
+
+				mediaRecorder.start();
+				fetch("/", {
+					method: "post",
+					body: fd,  
+				})
+				.then((response) => response.json())
+				.then((data) => {
+					text = data.msg;
+					if (!text.includes('err_msg')) {
+						allTexts.push(text);
+						transcriptDiv.innerHTML = `<span>${allTexts.join(' ')} </span>` 
+					} 
+				}); 
+			} 	
+		}
 	})
 	.catch((err) => {
 		console.error(`The following error occurred: ${err}`);
