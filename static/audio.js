@@ -92,7 +92,7 @@ if (navigator.mediaDevices) {
 
 		recordBtn.onclick = () => {
 			allChunks = [];
-			transcriptDiv = `<span>Re-annotating..</span>`;
+			transcriptDiv.innerHTML = `<span>Re-annotating..</span>`;
 			console.log('start recording');
 			stopped = 0;
 			mediaRecorder.start();
