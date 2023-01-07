@@ -139,7 +139,6 @@ function liveAudioSpeechRecognition() {
             }
           }
         }
-        console.log('emptying chunks..');
         chunks = [];
       }, 2000); 
     })
