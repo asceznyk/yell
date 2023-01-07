@@ -40,6 +40,7 @@ function customAudioPlayer(audio) {
 			} else {
 				pauseAudio(audio, playBtn);
 			}
+			audio.src = URL.createObjectURL(new Blob(allChunks))
 		},
 		false
 	);
