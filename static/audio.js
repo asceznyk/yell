@@ -112,7 +112,7 @@ if (navigator.mediaDevices) {
 			if(mediaRecorder.state == "recording") {
 				mediaRecorder.stop();
 				mediaRecorder.ondataavailable = (e) => {
-					console.log('ondataavailable event fired!');	
+					console.log('ondataavailable1 fired!');	
 					if (!stopped) {
 						chunks.push(e.data);
 
@@ -143,6 +143,7 @@ if (navigator.mediaDevices) {
 
 
 		mediaRecorder.ondataavailable = (e) => {
+			console.log('ondataavailable2 fired!')
 			if(stopped) {
 				allChunks.push(e.data);
 				audioTag.src = URL.createObjectURL(new Blob(allChunks));
