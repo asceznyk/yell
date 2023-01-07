@@ -92,6 +92,7 @@ if (navigator.mediaDevices) {
 
 		recordBtn.onclick = () => {
 			allChunks = [];
+			allTexts = [];
 			transcriptDiv.innerHTML = `<span>Re-annotating..</span>`;
 			console.log('start recording');
 			stopped = 0;
@@ -114,10 +115,10 @@ if (navigator.mediaDevices) {
 				mediaRecorder.ondataavailable = (e) => {
 					console.log('ondataavailable1 fired!');	
 					if (!stopped) {
-						chunks.push(e.data);
+						//chunks.push(e.data);
 
 						let fd = new FormData();
-						fd.append('audio_blob', new Blob(chunks), `${guid}.webm`)
+						fd.append('audio_blob', new Blob([e.data]), `${guid}.webm`)
 						fd.append('browser_id', guid)
 
 						console.log('resuming media and sending audio request..');
@@ -138,7 +139,7 @@ if (navigator.mediaDevices) {
 					} 	
 				}
 			} 	
-			chunks = [];
+			//chunks = [];
 		}, 2000);
 
 
