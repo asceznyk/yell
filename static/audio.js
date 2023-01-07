@@ -91,6 +91,8 @@ if (navigator.mediaDevices) {
 		})
 
 		recordBtn.onclick = () => {
+			allChunks = [];
+			transcriptDiv = `<span>Re-annotating..</span>`;
 			console.log('start recording');
 			stopped = 0;
 			mediaRecorder.start();
@@ -110,10 +112,9 @@ if (navigator.mediaDevices) {
 			if(mediaRecorder.state == "recording") {
 				mediaRecorder.stop();
 				mediaRecorder.ondataavailable = (e) => {
-					console.log('ondataavailable event fired!');
+					console.log('ondataavailable event fired!');	
 					if (!stopped) {
 						chunks.push(e.data);
-						allChunks.push(e.data);
 
 						let fd = new FormData();
 						fd.append('audio_blob', new Blob(chunks), `${guid}.webm`)
@@ -133,14 +134,20 @@ if (navigator.mediaDevices) {
 								allTexts.push(text);
 								transcriptDiv.innerHTML = `<span>${allTexts.join(' ')} </span>` 
 							} 
-						});
-
-						audioTag.src = URL.createObjectURL(new Blob(allChunks, {type:'audio/webm; codecs=opus'}));
+						}); 
 					} 	
 				}
 			} 	
 			chunks = [];
-		}, 2000); 
+		}, 2000);
+
+
+		mediaRecorder.ondataavailable = (e) => {
+			if(stopped) {
+				allChunks.push(e.data);
+				audioTag.src = URL.createObjectURL(new Blob(allChunks));
+			}
+		}
 	})
 	.catch((err) => {
 		console.error(`The following error occurred: ${err}`);
