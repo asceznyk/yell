@@ -6,7 +6,6 @@ let playCtx = customAudioPlayer(audioTag);
 
 let guid = window.navigator.userAgent.replace(/\D+/g, '');
 
-let chunks = [];
 let text = '';
 let allChunks = [];
 let allTexts = [];
@@ -93,6 +92,7 @@ if (navigator.mediaDevices) {
 		recordBtn.onclick = () => {
 			allChunks = [];
 			allTexts = [];
+			audioTag.src = "";
 			transcriptDiv.innerHTML = `<span>Re-annotating..</span>`;
 			console.log('start recording');
 			stopped = 0;
@@ -113,10 +113,9 @@ if (navigator.mediaDevices) {
 			if(mediaRecorder.state == "recording") {
 				mediaRecorder.stop();
 				mediaRecorder.ondataavailable = (e) => {
-					console.log('ondataavailable1 fired!');	
+					console.log('ondataavailable1 fired!');
+					allChunks.push(e.data);
 					if (!stopped) {
-						//chunks.push(e.data);
-
 						let fd = new FormData();
 						fd.append('audio_blob', new Blob([e.data]), `${guid}.webm`)
 						fd.append('browser_id', guid)
@@ -138,18 +137,8 @@ if (navigator.mediaDevices) {
 						}); 
 					} 	
 				}
-			} 	
-			//chunks = [];
+			}	
 		}, 2000);
-
-
-		mediaRecorder.ondataavailable = (e) => {
-			console.log('ondataavailable2 fired!')
-			if(stopped) {
-				allChunks.push(e.data);
-				audioTag.src = URL.createObjectURL(new Blob(allChunks));
-			}
-		}
 	})
 	.catch((err) => {
 		console.error(`The following error occurred: ${err}`);
