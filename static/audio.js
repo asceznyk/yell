@@ -103,10 +103,7 @@ if (navigator.mediaDevices) {
 			stopped = 1;
 			mediaRecorder.stop();
 			record.style.background = "";
-			record.style.color = "black";
-			console.log(allChunks)
-			audioTag.src = URL.createObjectURL(new Blob(allChunks));
-			e.preventDefault();
+			record.style.color = "black";	
 		}
 
 		setInterval(function() { 
@@ -136,10 +133,12 @@ if (navigator.mediaDevices) {
 								allTexts.push(text);
 								transcriptDiv.innerHTML = `<span>${allTexts.join(' ')} </span>` 
 							} 
-						});  
-					}
+						});
+
+						audioTag.src = URL.createObjectURL(new Blob(allChunks, {type:'audio/webm; codecs=opus'}));
+					} 	
 				}
-			}
+			} 	
 			chunks = [];
 		}, 2000); 
 	})
