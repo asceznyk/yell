@@ -31,16 +31,15 @@ function customAudioPlayer(audio) {
 	}, false);
 
 	playBtn.addEventListener(
-		"click",
-		() => {
+		"click", () => {
+			audio.src = URL.createObjectURL(new Blob(allChunks))
 			if (audio.paused) {
 				playBtn.classList.remove("play");
 				playBtn.classList.add("pause");
 				audio.play();
 			} else {
 				pauseAudio(audio, playBtn);
-			}
-			audio.src = URL.createObjectURL(new Blob(allChunks))
+			}	
 		},
 		false
 	);
