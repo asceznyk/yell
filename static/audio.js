@@ -112,14 +112,14 @@ function liveAudioSpeechRecognition() {
         if(mediaRecorder.state == "recording") {
 					mediaRecorder.stop();
           mediaRecorder.ondataavailable = (e) => { 
-            chunks.push(e.data);
-						allChunks.push(e.data);
-
-            let fd = new FormData();
-            fd.append('audio_blob', new Blob(chunks), `${guid}.webm`)
-            fd.append('browser_id', guid)
-
             if (!stopped) {
+							chunks.push(e.data);
+							allChunks.push(e.data);
+
+							let fd = new FormData();
+							fd.append('audio_blob', new Blob(chunks), `${guid}.webm`)
+							fd.append('browser_id', guid)
+
               console.log('resuming media and sending audio request..');
 
               mediaRecorder.start();
