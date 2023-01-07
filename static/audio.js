@@ -86,7 +86,9 @@ function liveAudioSpeechRecognition() {
   if (navigator.mediaDevices) {
     navigator.mediaDevices.getUserMedia({audio: true})
     .then((stream) => {
-      const mediaRecorder = new MediaRecorder(stream, {mimeType: 'audio/webm; codecs=opus'})
+      const mediaRecorder = new MediaRecorder(stream, {
+				mimeType: 'audio/webm; codecs=opus'
+			})
 
       recordBtn.onclick = () => {
         console.log('start recording');
@@ -102,6 +104,7 @@ function liveAudioSpeechRecognition() {
         mediaRecorder.stop();
         record.style.background = "";
         record.style.color = "black";
+				console.log(allChunks)
 				audioTag.src = URL.createObjectURL(new Blob(allChunks));
       }
 
