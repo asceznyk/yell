@@ -15,6 +15,6 @@ RUN apt update && apt install -y ffmpeg
 ENV PORT=5000
 EXPOSE 5000
 
-CMD exec gunicorn --bind :$PORT --workers 5 --threads 2 --timeout 0 home:app
+CMD exec gunicorn --certfile cert.pem --keyfile key.pem --bind :$PORT --workers 5 --threads 2 --timeout 0 home:app
 
 
