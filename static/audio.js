@@ -8,6 +8,31 @@ let allChunks = [];
 let allTexts = [];
 let stopped = 0;
 
+
+function toggleButtons(disabled) {
+	console.log('called toggleButtons!')
+	let buttons = document.getElementsByTagName("button");
+	for(let i = 0; i < buttons.length; i++) {
+		let button = buttons[i];
+		if(disabled) {
+			button.removeAttribute("disabled")
+			if (button.attributes.name && button.attributes.name.value == "keepdisabled") button.disabled = true;
+		} else {
+			button.disabled = true;
+			if(button.attributes.name && button.attributes.name.value == "keepenabled") button.removeAttribute("disabled")
+		}
+	}
+}
+
+async function sendPOST(url, formData) {
+	toggleButtons(false);
+	let result = await fetch(url, {method:"POST", body:formData});
+	result = await result.json();
+	toggleButtons(true);
+	console.log(result)
+	return result
+}
+
 function pauseAudio(audio, btn) {	
 	btn.classList.remove("pause");
 	btn.classList.add("play");
@@ -58,6 +83,7 @@ function liveAudioSpeechRecognition(audio) {
 	let recordBtn = document.getElementById("record");
 	let stopBtn = document.getElementById("stop");
 	let fullStr = ``;
+	let sidx = 0;
 
 	if (navigator.mediaDevices) {
 		navigator.mediaDevices.getUserMedia({audio: true})
@@ -98,7 +124,7 @@ function liveAudioSpeechRecognition(audio) {
 				allChunks.push(e.data);
 				if (!stopped) {
 					let fd = new FormData();
-					fd.append('audio_blob', new Blob([e.data]), `${guid}.webm`)
+					fd.append('audio_blob', new Blob([e.data]), `${guid}_${sidx}.webm`)
 					fd.append('browser_id', guid)
 
 					console.log('resuming media and sending audio request..');
