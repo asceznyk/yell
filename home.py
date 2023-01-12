@@ -38,7 +38,7 @@ def main_page():
         except Exception as e:
             text = f'err_msg: {e}'
 
-        return {'msg':text, 'ip': request.form['browser_id']}
+        return {'text':text, 'ip': request.form['browser_id']}
     else:
         return render_template('main.html')
 

@@ -4,7 +4,6 @@ const audioPlayer = document.querySelector(".audio-player");
 
 let guid = window.navigator.userAgent.replace(/\D+/g, '');
 
-let text = '';
 let allChunks = [];
 let allTexts = [];
 let stopped = 0;
@@ -58,6 +57,7 @@ function customAudioPlayer(audio) {
 function liveAudioSpeechRecognition(audio) {
 	let recordBtn = document.getElementById("record");
 	let stopBtn = document.getElementById("stop");
+	let fullStr = ``;
 
 	if (navigator.mediaDevices) {
 		navigator.mediaDevices.getUserMedia({audio: true})
@@ -70,7 +70,7 @@ function liveAudioSpeechRecognition(audio) {
 				allChunks = [];
 				allTexts = [];
 				audio.src = "";
-				transcriptDiv.innerHTML = `<span>Re-annotating..</span>`;
+				transcriptDiv.innerHTML = `<span>annotating..</span>`;
 				console.log('start recording');
 				stopped = 0;
 				mediaRecorder.start();
@@ -103,6 +103,7 @@ function liveAudioSpeechRecognition(audio) {
 
 					console.log('resuming media and sending audio request..');
 
+					let timestamp = Date.now();
 					mediaRecorder.start();
 					fetch("/", {
 						method: "post",
@@ -110,10 +111,22 @@ function liveAudioSpeechRecognition(audio) {
 					})
 					.then((response) => response.json())
 					.then((data) => {
-						text = data.msg;
-						if (!text.includes('err_msg')) {
-							allTexts.push(text);
-							transcriptDiv.innerHTML = `<span>${allTexts.join(' ')} </span>` 
+						let text = data['text'];
+						if(!text.includes('err_msg')) {
+							allTexts.push({"timestamp":timestamp, "text":text});
+							allTexts.sort(function(a, b) {
+								at = a["timestamp"];
+								bt = b["timestamp"];
+								if(at < bt) return -1;
+								if(at > bt) return 1;
+								return 0;
+							})
+							console.log(allTexts);
+							fullStr = ``;
+							allTexts.forEach((k) => {
+								fullStr += `${k['text']} `;
+							})
+							transcriptDiv.innerHTML = fullStr.replaceAll('.', '');
 						} 
 					}); 
 				} 	
