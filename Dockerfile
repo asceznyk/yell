@@ -12,6 +12,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt install -y flac && rm -rf /var/lib/apt/lists/*
 RUN apt update && apt install -y ffmpeg
 
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 home:app
+CMD exec gunicorn --bind :$PORT --workers 5 --threads 2 --timeout 0 home:app
 
 
