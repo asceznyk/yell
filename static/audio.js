@@ -117,7 +117,7 @@ function liveAudioSpeechRecognition(audio) {
 				if(mediaRecorder.state == "recording") {
 					mediaRecorder.stop();	
 				}	
-			}, 2000);
+			}, 4000);
 
 			mediaRecorder.ondataavailable = (e) => {
 				console.log('ondataavailable1 fired!');
