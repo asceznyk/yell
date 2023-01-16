@@ -152,7 +152,7 @@ function liveAudioSpeechRecognition(audio) {
 							allTexts.forEach((k) => {
 								fullStr += `${k['text']} `;
 							})
-							transcriptDiv.innerHTML = fullStr.replaceAll('.', '');
+							transcriptDiv.innerHTML = fullStr.replaceAll('.', '').toLowerCase();
 						} 
 					}); 
 				} 	
