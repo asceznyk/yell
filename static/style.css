@@ -46,6 +46,10 @@ html, body {
 	align-items: center;
 } 
 
+.audio-player .play-container, .audio-player .volume-container {
+	width: 15%;
+}
+
 .audio-player .controls>.timeline {
 	justify-content: left;
 	align-items: flex-start;
@@ -57,13 +61,13 @@ html, body {
 	left: 0;
 	height: 0;
 	width: 0;
-	border: 5px solid transparent;
-	border-left: 10px solid white;
+	border: 10px solid transparent;
+	border-left: 20px solid white;
 }
 
 .audio-player .controls .toggle-play.pause {
-	height: 10px;
-	width: 15px;
+	height: 20px;
+	width: 20px;
 	cursor: pointer;
 	position: relative;
 }
@@ -73,8 +77,8 @@ html, body {
 	left: 0px;
 	background: white;
 	content: "";
-	height: 10px;
-	width: 2px;
+	height: 20px;
+	width: 3px;
 }
 
 .audio-player .controls .toggle-play.pause:after {
@@ -83,8 +87,8 @@ html, body {
 	right: 8px;
 	background: white;
 	content: "";
-	height: 10px;
-	width: 2px;
+	height: 20px;
+	width: 3px;
 }
 
 .audio-player .controls .time {
@@ -100,13 +104,16 @@ html, body {
 	cursor: pointer;
 	position: relative;
 	z-index: 2;
-	margin-left: auto;
+	
 }
 
 .audio-player .controls .volume-container .volume-button {
-	height: 26px;
 	display: flex;
 	align-items: center;
+}
+
+.audio-player .controls .volume-container .volume-button .volume {
+	font-size: 26px;
 }
 
 .audio-player .controls .volume-container .volume-slider {
@@ -191,6 +198,7 @@ html, body {
 		width: 90vw;	
 	}
 }
+
 
 
 
